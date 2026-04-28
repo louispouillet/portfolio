@@ -1,0 +1,69 @@
+category,key,value,details
+identity,full_name,Louis Pouillet,Nom complet de l'utilisateur.
+identity,age,20 ans,Âge de l'utilisateur.
+identity,birth_date,2005-04-08,Né à Nouméa en Nouvelle-Calédonie.
+identity,physical_description,1m70 / 57kg,Yeux bleus et cheveux bruns.
+family,sibling,Laura,Sœur de Louis née le 6 décembre 1999.
+family,pets,Scotty,Chien de la famille.
+family,pets,Ily,Chien de la famille.
+education,middle_school,Collège Saint Joseph de Cluny,Obtention du brevet avec mention Très Bien à Nouméa.
+education,high_school,Lycée Blaise Pascal,Bac général obtenu à Nouméa avec mention Bien.
+education,specialty,Mathématiques,Note de 19/20 au baccalauréat.
+education,specialty,NSI,Numérique et Sciences Informatiques - Note de 19/20 au baccalauréat.
+education,current_studies,Bachelor Informatique,Première année à Epitech Toulouse.
+education,previous_studies,École 42 Adelaide,Intégration de l'école 42 en Australie.
+education,42_piscine_score,73/100,Score final obtenu lors de la piscine de l'école 42.
+projects,42_project,libft,Recréation d'une grande partie des fonctions standard du C.
+projects,42_project,printf,Recréation de la fonction de formatage printf.
+projects,42_project,get_next_line,Lecture de fichier ligne par ligne en C.
+projects,42_project,so_long,Développement d'un jeu vidéo 2D en C.
+projects,42_project,push_swap,Algorithme de tri optimisé.
+projects,42_project,philosophers,Gestion de la programmation concurrente (threads).
+projects,epitech_project,Etodo,Gestion de tâches avec React TypeScript et Express.js.
+projects,epitech_project,Etardis,Machine Learning en Python pour prédire les retards de trains.
+projects,epitech_project,Cherry,Application type Tinder dédiée aux événements.
+projects,github,https://github.com/LoucheVDC,Lien vers le portfolio et les dépôts de code.
+work_experience,farming,Tri de choux de Bruxelles,Travail agricole en Australie (sélection qualité).
+work_experience,construction,Adelaide Property Renovation,Rénovation de propriétés : charpenterie placo et peinture.
+skills,programming_language,C,Langage maîtrisé via 42 et Epitech.
+skills,programming_language,Python,Utilisé notamment pour le Machine Learning (Etardis).
+skills,programming_language,React TypeScript,Utilisé pour le développement web front-end.
+skills,framework,NestJS,Compétence en développement backend.
+skills,framework,Express.js,Compétence en développement backend.
+skills,programming_language,Swift,Niveau débutant.
+personality,trait,Sérieux et rigoureux,Applique une grande précision dans son travail.
+personality,trait,Maniaque,Parfois maniaque dans l'exécution de ses tâches professionnelles.
+personality,trait,Ambitieux,Aime apprendre par lui-même et vise haut.
+personality,trait,Solitaire,Se décrit comme quelqu'un de très solitaire.
+personality,flaw,Impatient,Peut manquer de patience par moments.
+personality,flaw,Entêté,N'aime pas être contredit.
+values,honesty,Très haute,Déteste le mensonge et privilégie la sincérité.
+values,work_ethic,Respect du travail acharné,Valorise les personnes qui travaillent dur.
+relationships,partner,Pauline,Rencontrée en Australie ils vivent ensemble à Toulouse.
+relationships,partner_studies,BTS MCO,Cursus actuel de sa copine Pauline.
+relationships,collaborator,Lilian,Ami et partenaire sur la majorité des projets scolaires.
+location,current_city,Toulouse,Habite dans le quartier Patte d'Oie.
+location,origin,Nouméa,Originaire de Nouvelle-Calédonie.
+travel,country_lived,Australie,A vécu 3 ans en Australie.
+travel,destination,Airlie Beach,Ville visitée en Australie.
+travel,destination,Sydney,Ville visitée en Australie.
+travel,destination,Melbourne,Ville visitée en Australie.
+travel,destination,Gold Coast,Ville visitée en Australie.
+travel,destination,Brisbane,Ville visitée en Australie.
+travel,destination,Nouvelle-Zélande,Voyage effectué.
+travel,destination,Bali,Voyage préféré effectué avec sa copine.
+hobbies,sport,Course à pied,Pratique régulière.
+hobbies,sport,Musculation,Pratique régulière en salle de sport.
+hobbies,past_sport,Tennis,Pratiqué étant plus jeune.
+hobbies,past_sport,Planche à voile,Pratiqué étant plus jeune.
+hobbies,past_sport,Karaté,Pratiqué étant plus jeune.
+hobbies,past_sport,Gymnastique,Pratiqué étant plus jeune.
+hobbies,music,Michael Jackson,Artiste musical préféré.
+hobbies,gaming,Fortnite et Minecraft,Jeux pratiqués auparavant (quasiment plus maintenant).
+hobbies,nature,Ski et Plage,Adore la plage (origine) mais apprécie beaucoup le ski.
+goals,career,Entrepreneur,Souhaite travailler à son compte plus tard.
+goals,lifestyle,Expatriation,Ambition de retourner vivre en Australie après les études.
+preferences,brand,Apple,Marque de technologie préférée.
+contact,phone,06 73 17 22 31,Numéro de téléphone personnel.
+contact,email,louis.pouillet@epitech.eu,Adresse email professionnelle/étudiante.
+timeline,last_visit_home,2024-12,Dernière fois qu'il a vu ses parents en Nouvelle-Calédonie.
