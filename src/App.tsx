@@ -78,7 +78,7 @@ function App() {
             <ActiveBar openPages={openPages} activePage={activePage} onSelectPage={handleSelectPage} onClosePage={handleClosePage} />
           </div>
           <div className='block sm:hidden'>
-            <PhoneBar activePage={activePage}/>
+            <PhoneBar activePage={activePage} onSelectPage={handleSelectPage} />
           </div>
           {renderPage()}
         </div>

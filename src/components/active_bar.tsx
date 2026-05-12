@@ -6,7 +6,6 @@ import { FaJs } from "react-icons/fa";
 import { VscJson } from "react-icons/vsc";
 import { SiTypescript } from "react-icons/si";
 import { FaCss3Alt } from "react-icons/fa";
-import { FaFilePdf } from "react-icons/fa";
 
 type PageKey = "home" | "about" | "projects" | "skills" | "experience" | "contact";
 
