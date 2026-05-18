@@ -1,5 +1,4 @@
 import "@fontsource/jetbrains-mono/400.css";
-import Skills from "./skills";
 import { FaReact } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
 import { FaJs } from "react-icons/fa";

@@ -1,5 +1,5 @@
 import "@fontsource/poppins/800.css";
-import "./skills.css"
+import "../../styles/skills.css"
 import { useEffect, useState } from "react";
 import { VscJson } from "react-icons/vsc";
 

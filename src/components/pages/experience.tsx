@@ -1,5 +1,5 @@
 import "@fontsource/poppins/800.css";
-import "./skills.css";
+import "../../styles/skills.css";
 import { SiTypescript } from "react-icons/si";
 import { GrCodeSandbox } from "react-icons/gr";
 

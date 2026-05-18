@@ -1,12 +1,12 @@
 import "@fontsource/poppins/800.css";
-import "./skills.css";
+import "../../styles/skills.css";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { FaCss3Alt, FaLinkedin, FaGithub, FaYoutube, FaInstagram } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiArrowUpRight, FiSend } from "react-icons/fi";
 import { VscCircleFilled } from "react-icons/vsc";
-import Louis from "../assets/louis.png";
+import Louis from "../../assets/images/Louis.png";
 
 
 const EMAILJS_SERVICE_ID  = "service_sfkbqfq";
@@ -15,7 +15,7 @@ const EMAILJS_PUBLIC_KEY  = "jYfnlDBM6bIni5B8W";
 
 
 const RATE_LIMIT_MAX      = 3;
-const RATE_LIMIT_WINDOW   = 60 * 60 * 1000; // 1 heure en ms
+const RATE_LIMIT_WINDOW   = 60 * 60 * 1000; 
 const RATE_LIMIT_KEY      = "contact_submissions";
 
 function getRateLimitData(): { timestamps: number[] } {
@@ -92,43 +92,40 @@ const Contact = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8 slide-up delay-3 lg:ml-3">
 
-        <div className="bg-[#232323] border border-[#777] rounded-[5px] p-6 flex flex-col gap-4 hover:bg-[#2D2D2D] hover:border-t-[#1608CE] hover:border-t-2 transition-colors cursor-default">
-          <div className="flex flex-row items-center gap-5">
-            <div className="relative shrink-0">
-              <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#1608CE] to-[#4EC9B0] flex items-center justify-center text-2xl font-extrabold text-white" style={{ fontFamily: "poppins" }}>
-                <img src={Louis} alt="Profile" className="w-full h-20 object-cover rounded-full" />
-              </div>
-              <span className="absolute bottom-0 right-0 w-4 h-4 bg-[#232323] rounded-full flex items-center justify-center">
-                <VscCircleFilled className="text-[#4EC9B0] text-xs" />
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-mono text-white font-bold text-lg tracking-tight">Louis Pouillet</span>
-              <span className="font-mono text-[#777] text-sm">IT Student</span>
-              <span className="font-mono text-[#4EC9B0] text-xs mt-1 flex items-center gap-1">
-                <VscCircleFilled className="text-[10px]" />
+        <div className="bg-[#1C1C1C] border border-[#333] rounded-lg overflow-hidden flex flex-row hover:border-[#555] transition-all cursor-default shadow-xl">
+          {/* Left: infos */}
+          <div className="flex flex-col justify-between p-5 flex-1">
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-white font-bold text-xl tracking-tight">Louis Pouillet</span>
+              <span className="font-mono text-[#666] text-sm">IT Student · Epitech</span>
+              <span className="font-mono text-[#4EC9B0] text-xs mt-2 flex items-center gap-1.5">
+                <VscCircleFilled className="text-[8px] animate-pulse" />
                 Open to opportunities
               </span>
             </div>
+            <div className="h-px w-full bg-[#2a2a2a] my-4" />
+            <div className="flex flex-col gap-3 font-mono">
+              <div>
+                <span className="text-[#4a4a4a] text-[10px] tracking-widest uppercase block">Location</span>
+                <span className="text-[#CCC] text-sm mt-0.5 block">Toulouse, France</span>
+              </div>
+              <div>
+                <span className="text-[#4a4a4a] text-[10px] tracking-widest uppercase block">School</span>
+                <span className="text-[#CCC] text-sm mt-0.5 block">Epitech Toulouse</span>
+              </div>
+              <div>
+                <span className="text-[#4a4a4a] text-[10px] tracking-widest uppercase block">Languages</span>
+                <span className="text-[#CCC] text-sm mt-0.5 block">FR / EN</span>
+              </div>
+              <div>
+                <span className="text-[#4a4a4a] text-[10px] tracking-widest uppercase block">Year</span>
+                <span className="text-[#CCC] text-sm mt-0.5 block">B1 — 2025/2026</span>
+              </div>
+            </div>
           </div>
-          <div className="h-px w-full bg-[#333]" />
-          <div className="grid grid-cols-2 gap-3 font-mono text-sm">
-            <div className="flex flex-col">
-              <span className="text-[#777] text-xs">LOCATION</span>
-              <span className="text-white mt-1">Toulouse, France</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[#777] text-xs">SCHOOL</span>
-              <span className="text-white mt-1">Epitech Toulouse</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[#777] text-xs">LANGUAGES</span>
-              <span className="text-white mt-1">FR / EN</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[#777] text-xs">YEAR</span>
-              <span className="text-white mt-1">B1 — 2025/2026</span>
-            </div>
+          {/* Right: photo */}
+          <div className="w-44 shrink-0 mr-4 my-4 rounded-lg overflow-hidden bg-white">
+            <img src={Louis} alt="Profile" className="w-full h-full object-cover object-center" />
           </div>
         </div>
 
@@ -254,7 +251,6 @@ const Contact = () => {
             />
           </div>
 
-          {/* Feedback messages */}
           {formState === "success" && (
             <span className="font-mono text-[#4EC9B0] text-sm">// Message sent successfully! I'll get back to you soon.</span>
           )}

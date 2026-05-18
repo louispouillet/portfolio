@@ -1,8 +1,8 @@
 import "@fontsource/poppins/800.css";
-import "./skills.css"
+import "../../styles/skills.css"
 import { FaHtml5 } from "react-icons/fa";
-import epitechLogo from "../assets/epitech.png";
-import ecole from "../assets/42_Logo.svg";
+import epitechLogo from "../../assets/images/epitech.png";
+import ecole from "../../assets/images/42_Logo.svg";
 
 
 const About = () => {

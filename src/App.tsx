@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import MenuBar from './components/Menu_Bar';
+import MenuBar from './components/layout/Menu_Bar';
 import './App.css'
-import TopBar from './components/Top_bar';
-import LeftBar from './components/Left_Bar';
-import FilesBar from './components/Files_Bar';
-import Home from './components/home.tsx';
-import About from './components/about';
-import Projects from './components/projects';
-import Skills from './components/skills';
-import Experience from './components/experience';
-import Contact from './components/contact';
-import ActiveBar from './components/active_bar';
-import PhoneBar from './components/phone_bar';
+import TopBar from './components/layout/Top_bar';
+import LeftBar from './components/layout/Left_Bar';
+import FilesBar from './components/layout/Files_Bar';
+import Home from './components/pages/home';
+import About from './components/pages/about';
+import Projects from './components/pages/projects';
+import Skills from './components/pages/skills';
+import Experience from './components/pages/experience';
+import Contact from './components/pages/contact';
+import ActiveBar from './components/layout/active_bar';
+import PhoneBar from './components/layout/phone_bar';
+
 
 type PageKey = 'home' | 'about' | 'projects' | 'skills' | 'experience' | 'contact';
 

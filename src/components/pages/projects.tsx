@@ -1,5 +1,5 @@
 import "@fontsource/poppins/800.css";
-import "./skills.css";
+import "../../styles/skills.css";
 import { FaJs } from "react-icons/fa";
 import { TbCherryFilled } from "react-icons/tb";
 import { MdSyncLock } from "react-icons/md";
@@ -115,7 +115,7 @@ const Projects = () => {
 
           <div className="flex flex-row justify-between lg:mt-2">
             <span style={{ fontFamily: "poppins" }} className="text-white font-extrabold text-xl lg:text-2xl tracking-[1px]">Cherry</span>
-            <a href="https://github.com/LoucheVDC/push_swap" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/LoucheVDC/-Cherry" target="_blank" rel="noopener noreferrer">
               <span className="text-[#4EC9B0] border rounded-sm px-2 py-1 flex items-center gap-1 hover:bg-[#2D2D2D] font-mono text-xs">Github<GoArrowUpRight /></span>
             </a>
           </div>
@@ -138,7 +138,7 @@ const Projects = () => {
 
           <div className="flex flex-row justify-between lg:mt-2">
             <span style={{ fontFamily: "poppins" }} className="text-white font-extrabold text-xl lg:text-2xl tracking-[1px]">Etardis</span>
-            <a href="https://github.com/LoucheVDC/philosophers" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/LoucheVDC/Etardis" target="_blank" rel="noopener noreferrer">
               <span className="text-[#FF6FD8] border rounded-sm px-2 py-1 flex items-center gap-1 hover:bg-[#2D2D2D] font-mono text-xs">Github<GoArrowUpRight /></span>
             </a>
           </div>

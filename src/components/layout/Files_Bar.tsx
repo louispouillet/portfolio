@@ -6,7 +6,7 @@ import { VscJson } from "react-icons/vsc";
 import { SiTypescript } from "react-icons/si";
 import { FaCss3Alt } from "react-icons/fa";
 import { FaFilePdf } from "react-icons/fa";
-import cvPdf from "../assets/Louis_Pouillet_cv.pdf";
+import cvPdf from "../../assets/documents/Louis_Pouillet_cv.pdf";
 
 type PageKey = "home" | "about" | "projects" | "skills" | "experience" | "contact";
 

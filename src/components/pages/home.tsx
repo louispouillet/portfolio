@@ -1,6 +1,6 @@
 import "@fontsource/poppins/800.css";
-import "./home.css"     
-import epitechLogo from "../assets/epitech.png";
+import "../../styles/home.css"
+import epitechLogo from "../../assets/images/epitech.png";
 import { ReactTyped } from "react-typed";
 import { FaCodepen } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa6";
