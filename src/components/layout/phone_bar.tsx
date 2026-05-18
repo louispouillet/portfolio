@@ -6,10 +6,6 @@ import { useState } from "react";
 
 type PageKey = "home" | "about" | "projects" | "skills" | "experience" | "contact";
 
-type FilesBarProps = {
-  activePage: PageKey;
-};
-
 type PhoneBarProps = {
   activePage: PageKey;
   onSelectPage: (page: PageKey) => void;
