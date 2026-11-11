@@ -1,7 +1,7 @@
 import { FaFilePdf } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import cvPdf from "../../assets/documents/Louis_Pouillet_cv.pdf";
-import { PAGES } from "../../config/pages";
+import { PAGE_LIST } from "../../config/pageMeta";
 import { pagePath, type Language, type PageKey } from "../../config/routes";
 
 type FilesBarProps = {
@@ -20,7 +20,7 @@ const FilesBar = ({ language, activePage, onNavigate }: FilesBarProps) => {
     <div className="flex flex-col gap-2 bg-panel w-50 py-2 h-full border-line border">
       <span className="text-[0.7rem] text-soft font-mono ml-2">PORTFOLIO</span>
       <div className="flex flex-col gap-1">
-        {PAGES.map(({ key, fileName, icon: Icon, iconClassName }) => (
+        {PAGE_LIST.map(({ key, fileName, icon: Icon, iconClassName }) => (
           <Link key={key} to={pagePath({ language, page: key })} onClick={onNavigate} className={getItemClassName(key)}>
             <Icon className={`${iconClassName} inline-block ml-2`} />
             <span className="pl-[25%] text-[0.7rem] font-mono">{fileName}</span>

@@ -3,6 +3,7 @@ import type { Language } from "../../config/routes";
 import type { Project, ProjectAccent } from "../../data/projects";
 import { translate } from "../../i18n/format";
 import RichText from "./RichText";
+import Tag from "../ui/Tag";
 
 const ACCENT_CLASSES: Record<ProjectAccent, { line: string; text: string; highlight: string }> = {
   pink: { line: "bg-accent-pink", text: "text-accent-pink", highlight: "text-accent-teal" },
@@ -45,7 +46,7 @@ const ProjectCard = ({ project, language, className }: ProjectCardProps) => {
         {tags.map((tag) => {
           const label = translate({ text: tag, language });
           return (
-            <span key={label} className="bg-bar text-white pl-2 pr-2 py-1 rounded text-sm border-[#707070] border">{label}</span>
+            <Tag key={label} label={label} variant="neutral" />
           );
         })}
       </div>

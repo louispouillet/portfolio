@@ -1,4 +1,4 @@
-import { PAGE_BY_KEY } from "../../config/pages";
+import { PAGE_META } from "../../config/pageMeta";
 import type { PageKey } from "../../config/routes";
 
 type ActiveBarProps = {
@@ -13,7 +13,7 @@ const ActiveBar = ({ openPages, activePage, onSelectPage, onClosePage }: ActiveB
     <div className="flex flex-row bg-bar">
 
       {openPages.map((page) => {
-        const { fileName, icon: Icon, iconClassName } = PAGE_BY_KEY[page];
+        const { fileName, icon: Icon, iconClassName } = PAGE_META[page];
         return (
         <div key={page} className={`group flex items-center px-3 py-2 text-sm cursor-pointer border-line border-r ${ activePage === page ? "bg-editor text-white border-t-[#1808f0] border-t" : "text-gray-400 hover:text-white border-line border-t"}`}
     onClick={() => onSelectPage(page)}

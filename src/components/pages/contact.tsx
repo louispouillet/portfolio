@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { FaCss3Alt } from "react-icons/fa";
 import { FiArrowUpRight, FiSend } from "react-icons/fi";
 import { VscCircleFilled } from "react-icons/vsc";
 import Louis from "../../assets/images/Louis.webp";
@@ -8,6 +7,10 @@ import { CONTACT_LINKS, FULL_NAME, PROFILE_FACTS } from "../../data/contact";
 import { useLanguage } from "../../hooks/useLanguage";
 import { translate } from "../../i18n/format";
 import { UI_TEXT } from "../../i18n/ui";
+import Card from "../ui/Card";
+import CodeComment from "../ui/CodeComment";
+import PageHeader from "../ui/PageHeader";
+import PageLayout from "../ui/PageLayout";
 
 
 const EMAILJS_SERVICE_ID  = "service_sfkbqfq";
@@ -85,22 +88,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex h-full w-full flex-col overflow-x-hidden bg-editor px-4 py-4 sm:px-8 sm:py-6 pb-10">
-      <span className="border-l -mt-3 -ml-2 lg:-mt-5 border-crumb lg:-ml-6 pl-1 text-xs text-soft sm:text-sm font-mono hidden sm:block">
-        louis {'>'} portfolio {'>'} src {'>'}{' '}
-        <span className="text-white">contact.css</span>
-      </span>
-
-      <span className="slide-up delay-1 mt-3 max-w-full font-mono text-sm text-[#6F6F6F] lg:ml-3 sm:text-lg lg:text-[1rem]">
-        {text.comment}
-      </span>
-
-      <div className="slide-up delay-2 mt-5 flex flex-row items-end gap-1 sm:justify-start lg:ml-3">
-        <FaCss3Alt className="text-4xl text-[#1608CE] sm:text-6xl lg:text-6xl" />
-        <span className="font-display ml-3 text-3xl font-extrabold tracking-[-1px] text-white sm:text-6xl sm:tracking-[-2px] lg:text-6xl lg:tracking-[-2.5px]">
-          {text.title}
-        </span>
-      </div>
+    <PageLayout isPadded>
+      <CodeComment text={text.comment} className="mt-3 lg:ml-3" />
+      <PageHeader page="contact" title={text.title} className="mt-5 lg:ml-3" />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8 slide-up delay-3 lg:ml-3">
 
@@ -150,7 +140,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="slide-up delay-4 mt-6 lg:ml-3 bg-surface border border-muted rounded-[5px] p-6 lg:w-[calc(100%-0.75rem)]">
+      <Card className="slide-up delay-4 mt-6 lg:ml-3 lg:w-[calc(100%-0.75rem)]">
         <span className="font-mono italic text-accent-teal text-lg tracking-wider">{text.form.title}</span>
         <form ref={formRef} onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -225,8 +215,8 @@ const Contact = () => {
             {formState === "sending" ? text.form.sending : text.form.send}
           </button>
         </form>
-      </div>
-    </div>
+      </Card>
+    </PageLayout>
   );
 };
 

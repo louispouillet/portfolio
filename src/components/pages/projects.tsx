@@ -1,29 +1,22 @@
-import { FaJs } from "react-icons/fa";
 import { PROJECTS } from "../../data/projects";
 import { useLanguage } from "../../hooks/useLanguage";
 import { UI_TEXT } from "../../i18n/ui";
 import ProjectCard from "../content/ProjectCard";
+import CodeComment from "../ui/CodeComment";
+import PageHeader from "../ui/PageHeader";
+import PageLayout from "../ui/PageLayout";
 
 const Projects = () => {
   const language = useLanguage();
   const text = UI_TEXT[language].projects;
 
   return (
-    <div className="flex h-full w-full flex-col overflow-x-hidden bg-editor">
-
-      <span className="border-l border-crumb pl-1 text-xs text-soft sm:text-sm font-mono hidden sm:block ml-2 mt-1">
-        louis {'>'} portfolio {'>'} src {'>'}{' '}
-        <span className="text-white">projects.js</span>
-      </span>
-
+    <PageLayout>
       <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8 ">
         <div className="slide-up delay-1 flex flex-row items-center gap-2 lg:ml-8 ml-4 mt-5">
           <div className="flex flex-col lg:gap-10 gap-4">
-            <span className="text-comment font-mono">{text.comment}</span>
-            <div className="flex flex-row gap-2 slide-up delay-2">
-              <FaJs className="text-4xl text-[#F7DF1F] sm:text-6xl lg:text-6xl" />
-              <span className="font-display text-4xl font-extrabold tracking-[-1px] text-white sm:text-6xl lg:tracking-[-2px]">{text.title}</span>
-            </div>
+            <CodeComment text={text.comment} />
+            <PageHeader page="projects" title={text.title} />
             <span className="text-muted font-mono w-auto lg:w-160 slide-up delay-3">{text.quote}</span>
           </div>
         </div>
@@ -57,8 +50,7 @@ const Projects = () => {
           <ProjectCard key={project.id} project={project} language={language} className={index % 2 === 1 ? "lg:-ml-10" : ""} />
         ))}
       </div>
-
-    </div>
+    </PageLayout>
   );
 };
 

@@ -9,18 +9,15 @@ import { pagePath } from "../../config/routes";
 import { useLanguage } from "../../hooks/useLanguage";
 import { UI_TEXT } from "../../i18n/ui";
 import RichText from "../content/RichText";
+import PageLayout from "../ui/PageLayout";
 
 const Home = () => {
   const language = useLanguage();
   const text = UI_TEXT[language].home;
 
   return (
-    <div className="flex h-full flex-col bg-editor">
+    <PageLayout>
       <div className="flex flex-col font-mono">
-        <span className="ml-2 border-l mt-1 border-crumb pl-1 text-xs text-soft sm:text-sm hidden sm:block">
-                louis {'>'} portfolio {'>'} src {'>'}{' '}
-              <span className="text-white">home.tsx</span>
-            </span>
         <span className="animate-colorChange mb-4 mt-6 px-4 text-sm sm:mt-8 sm:mb-5 sm:px-8 sm:text-base lg:mt-10 lg:px-16">
           <ReactTyped key={language} strings={text.typedLines} typeSpeed={80} backSpeed={40} loop />
         </span>
@@ -74,7 +71,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

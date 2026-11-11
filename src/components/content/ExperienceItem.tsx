@@ -2,6 +2,7 @@ import { GrCodeSandbox } from "react-icons/gr";
 import type { Language } from "../../config/routes";
 import type { Experience } from "../../data/experiences";
 import { formatPeriod, translate } from "../../i18n/format";
+import Tag from "../ui/Tag";
 
 type ExperienceItemProps = {
   experience: Experience;
@@ -25,7 +26,7 @@ const ExperienceItem = ({ experience, language, className }: ExperienceItemProps
         {skills.map((skill) => {
           const label = translate({ text: skill, language });
           return (
-            <span key={label} className="border border-[#1C3B54] px-2 py-0.5 bg-[#1E252C] text-highlight text-xs rounded">{label}</span>
+            <Tag key={label} label={label} variant="accent" />
           );
         })}
       </div>

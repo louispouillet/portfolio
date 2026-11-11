@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PAGE_BY_KEY } from "../../config/pages";
+import { PAGE_META } from "../../config/pageMeta";
+import { PAGE_COMPONENTS } from "../../config/pages";
 import { pagePath, type Language, type PageKey } from "../../config/routes";
+import Breadcrumb from "../ui/Breadcrumb";
 import ActiveBar from "./active_bar";
 import FilesBar from "./Files_Bar";
 import LeftBar from "./Left_Bar";
@@ -18,7 +20,7 @@ const Editor = ({ language, activePage }: EditorProps) => {
   const navigate = useNavigate();
   const [openPages, setOpenPages] = useState<PageKey[]>([activePage]);
   const [previousActivePage, setPreviousActivePage] = useState<PageKey>(activePage);
-  const ActivePage = PAGE_BY_KEY[activePage].component;
+  const ActivePage = PAGE_COMPONENTS[activePage];
 
   if (activePage !== previousActivePage) {
     setPreviousActivePage(activePage);
@@ -61,6 +63,7 @@ const Editor = ({ language, activePage }: EditorProps) => {
           <div className='hidden sm:block'>
             <ActiveBar openPages={openPages} activePage={activePage} onSelectPage={handleSelectPage} onClosePage={handleClosePage} />
           </div>
+          <Breadcrumb fileName={PAGE_META[activePage].fileName} />
           <div className='block sm:hidden'>
             <PhoneBar language={language} activePage={activePage} />
           </div>
