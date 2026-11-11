@@ -6,7 +6,7 @@ import { FaCss3Alt, FaLinkedin, FaGithub, FaYoutube, FaInstagram } from "react-i
 import { AiOutlineMail } from "react-icons/ai";
 import { FiArrowUpRight, FiSend } from "react-icons/fi";
 import { VscCircleFilled } from "react-icons/vsc";
-import Louis from "../../assets/images/Louis.png";
+import Louis from "../../assets/images/Louis.webp";
 
 
 const EMAILJS_SERVICE_ID  = "service_sfkbqfq";
