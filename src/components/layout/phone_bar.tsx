@@ -3,8 +3,7 @@ import { IoMenuSharp } from "react-icons/io5";
 import { GoCopilot } from "react-icons/go";
 import FilesBar from "./Files_Bar";
 import { useState } from "react";
-
-type PageKey = "home" | "about" | "projects" | "skills" | "experience" | "contact";
+import type { PageKey } from "../../config/pages";
 
 type PhoneBarProps = {
   activePage: PageKey;

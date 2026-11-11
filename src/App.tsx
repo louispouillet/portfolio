@@ -3,46 +3,15 @@ import MenuBar from './components/layout/Menu_Bar';
 import TopBar from './components/layout/Top_bar';
 import LeftBar from './components/layout/Left_Bar';
 import FilesBar from './components/layout/Files_Bar';
-import Home from './components/pages/home';
-import About from './components/pages/about';
-import Projects from './components/pages/projects';
-import Skills from './components/pages/skills';
-import Experience from './components/pages/experience';
-import Contact from './components/pages/contact';
 import ActiveBar from './components/layout/active_bar';
 import PhoneBar from './components/layout/phone_bar';
-
-
-type PageKey = 'home' | 'about' | 'projects' | 'skills' | 'experience' | 'contact';
+import { PAGE_BY_KEY, type PageKey } from './config/pages';
 
 
 function App() {
   const [activePage, setActivePage] = useState<PageKey>('home');
   const [openPages, setOpenPages] = useState<PageKey[]>(['home']);
-
-  const renderPage = () => {
-    if (activePage === 'about') {
-      return <About />;
-    }
-
-    if (activePage === 'projects') {
-      return <Projects />;
-    }
-
-    if (activePage === 'skills') {
-      return <Skills />;
-    }
-
-    if (activePage === 'experience') {
-      return <Experience />;
-    }
-
-    if (activePage === 'contact') {
-      return <Contact />;
-    }
-
-    return <Home onSelectPage={handleSelectPage} />;
-  };
+  const ActivePage = PAGE_BY_KEY[activePage].component;
 
   const handleSelectPage = (page: PageKey) => {
     if (!openPages.includes(page)) {
@@ -80,7 +49,7 @@ function App() {
           <div className='block sm:hidden'>
             <PhoneBar activePage={activePage} onSelectPage={handleSelectPage} />
           </div>
-          {renderPage()}
+          <ActivePage onSelectPage={handleSelectPage} />
         </div>
       </div>
     </div>

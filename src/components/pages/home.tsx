@@ -6,14 +6,9 @@ import { FaCodepen } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import { TiHeartHalfOutline } from "react-icons/ti";
+import type { PageProps } from "../../config/pages";
 
-type PageKey = "home" | "about" | "projects" | "skills" | "experience" | "contact";
-
-type HomeProps = {
-  onSelectPage: (page: PageKey) => void;
-};
-
-const Home = ({ onSelectPage }: HomeProps) => {
+const Home = ({ onSelectPage }: PageProps) => {
   const Text = ["// hello and welcome to my portfolio", "// I am passionate about software development", "// always learning", "// currently studying at epitech", "// feel free to explore and contact me !"];
 
   return (
