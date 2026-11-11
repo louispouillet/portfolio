@@ -1,5 +1,3 @@
-import "@fontsource/poppins/800.css";
-import "../../styles/skills.css"
 import { FaHtml5 } from "react-icons/fa";
 import epitechLogo from "../../assets/images/epitech.png";
 import ecole from "../../assets/images/42_Logo.svg";

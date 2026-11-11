@@ -1,5 +1,3 @@
-import "@fontsource/poppins/800.css";
-import "../../styles/skills.css"
 import { VscJson } from "react-icons/vsc";
 import { SKILL_GROUPS } from "../../data/skills";
 import { useLanguage } from "../../hooks/useLanguage";

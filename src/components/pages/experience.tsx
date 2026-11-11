@@ -1,5 +1,3 @@
-import "@fontsource/poppins/800.css";
-import "../../styles/skills.css";
 import { SiTypescript } from "react-icons/si";
 import { EXPERIENCES } from "../../data/experiences";
 import { useLanguage } from "../../hooks/useLanguage";

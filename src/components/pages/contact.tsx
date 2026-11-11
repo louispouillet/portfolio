@@ -1,5 +1,3 @@
-import "@fontsource/poppins/800.css";
-import "../../styles/skills.css";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { FaCss3Alt } from "react-icons/fa";

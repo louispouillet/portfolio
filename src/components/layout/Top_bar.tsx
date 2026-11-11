@@ -1,4 +1,3 @@
-import "@fontsource/jetbrains-mono/400.css";
 import { CiSearch } from "react-icons/ci";
 import type { Language, PageKey } from "../../config/routes";
 import LanguageSwitcher from "./LanguageSwitcher";

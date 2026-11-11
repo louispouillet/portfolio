@@ -1,4 +1,3 @@
-import "@fontsource/jetbrains-mono/400.css";
 import { IoMenuSharp } from "react-icons/io5";
 import { GoCopilot } from "react-icons/go";
 import FilesBar from "./Files_Bar";

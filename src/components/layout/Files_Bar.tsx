@@ -1,4 +1,3 @@
-import "@fontsource/jetbrains-mono/400.css";
 import { FaFilePdf } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import cvPdf from "../../assets/documents/Louis_Pouillet_cv.pdf";

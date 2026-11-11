@@ -1,5 +1,3 @@
-import "@fontsource/poppins/800.css";
-import "../../styles/skills.css";
 import { FaJs } from "react-icons/fa";
 import { PROJECTS } from "../../data/projects";
 import { useLanguage } from "../../hooks/useLanguage";

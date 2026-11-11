@@ -1,4 +1,3 @@
-import "@fontsource/jetbrains-mono/400.css";
 import { GoFileDirectory } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
 import { VscExtensionsLarge } from "react-icons/vsc";

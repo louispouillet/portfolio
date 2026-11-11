@@ -1,5 +1,3 @@
-import "@fontsource/poppins/800.css";
-import "../../styles/home.css"
 import epitechLogo from "../../assets/images/epitech.png";
 import { ReactTyped } from "react-typed";
 import { FaCodepen } from "react-icons/fa";

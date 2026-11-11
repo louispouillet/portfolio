@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import "@fontsource/jetbrains-mono/400.css";
 
 const MenuButton = ({ title, options }: { title: string; options: string[] }) => {
   const [open, setOpen] = useState(false);
