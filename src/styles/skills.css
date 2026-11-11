@@ -23,3 +23,12 @@
 .slide-up.delay-6 { animation-delay: 1.2s; }
 .slide-up.delay-7 { animation-delay: 1.4s; }
 .slide-up.delay-8 { animation-delay: 1.6s; }
+
+@keyframes fillSkillBar {
+  to { width: var(--skill-level); }
+}
+
+.skill-bar-fill {
+  width: 0;
+  animation: fillSkillBar 2s ease-in-out forwards;
+}
