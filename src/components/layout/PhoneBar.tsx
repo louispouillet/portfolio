@@ -1,6 +1,6 @@
 import { IoMenuSharp } from "react-icons/io5";
 import { GoCopilot } from "react-icons/go";
-import FilesBar from "./Files_Bar";
+import FilesBar from "./FilesBar";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useState } from "react";
 import type { Language, PageKey } from "../../config/routes";

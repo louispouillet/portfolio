@@ -4,12 +4,12 @@ import { PAGE_META } from "../../config/pageMeta";
 import { PAGE_COMPONENTS } from "../../config/pages";
 import { pagePath, type Language, type PageKey } from "../../config/routes";
 import Breadcrumb from "../ui/Breadcrumb";
-import ActiveBar from "./active_bar";
-import FilesBar from "./Files_Bar";
-import LeftBar from "./Left_Bar";
-import MenuBar from "./Menu_Bar";
-import PhoneBar from "./phone_bar";
-import TopBar from "./Top_bar";
+import TabBar from "./TabBar";
+import FilesBar from "./FilesBar";
+import ActivityBar from "./ActivityBar";
+import MenuBar from "./MenuBar";
+import PhoneBar from "./PhoneBar";
+import TopBar from "./TopBar";
 
 type EditorProps = {
   language: Language;
@@ -54,14 +54,14 @@ const Editor = ({ language, activePage }: EditorProps) => {
       </div>
       <div className='flex flex-row w-full h-full'>
         <div className='hidden sm:block'>
-          <LeftBar />
+          <ActivityBar />
         </div>
         <div className='hidden sm:block'>
           <FilesBar language={language} activePage={activePage} />
         </div>
         <div className='flex flex-col flex-1 h-full'>
           <div className='hidden sm:block'>
-            <ActiveBar openPages={openPages} activePage={activePage} onSelectPage={handleSelectPage} onClosePage={handleClosePage} />
+            <TabBar openPages={openPages} activePage={activePage} onSelectPage={handleSelectPage} onClosePage={handleClosePage} />
           </div>
           <Breadcrumb fileName={PAGE_META[activePage].fileName} />
           <div className='block sm:hidden'>

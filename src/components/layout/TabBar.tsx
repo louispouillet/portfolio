@@ -1,14 +1,14 @@
 import { PAGE_META } from "../../config/pageMeta";
 import type { PageKey } from "../../config/routes";
 
-type ActiveBarProps = {
+type TabBarProps = {
     openPages: PageKey[];
     activePage: PageKey;
     onSelectPage: (page: PageKey) => void;
     onClosePage: (page: PageKey) => void;
 };
 
-const ActiveBar = ({ openPages, activePage, onSelectPage, onClosePage }: ActiveBarProps) => {
+const TabBar = ({ openPages, activePage, onSelectPage, onClosePage }: TabBarProps) => {
     return (
     <div className="flex flex-row bg-bar">
 
@@ -37,4 +37,4 @@ const ActiveBar = ({ openPages, activePage, onSelectPage, onClosePage }: ActiveB
   );
 };
 
-export default ActiveBar;
+export default TabBar;
