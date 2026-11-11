@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import MenuBar from './components/layout/Menu_Bar';
-import './App.css'
 import TopBar from './components/layout/Top_bar';
 import LeftBar from './components/layout/Left_Bar';
 import FilesBar from './components/layout/Files_Bar';
