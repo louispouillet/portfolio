@@ -3,6 +3,26 @@
 @import "shadcn/tailwind.css";
 @import "./styles/animations.css";
 
+@theme {
+  --font-display: "Poppins", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-editor: #1E1E1E;
+  --color-panel: #252526;
+  --color-bar: #2D2D2D;
+  --color-surface: #232323;
+  --color-line: #3C3C3C;
+  --color-hover: #404051;
+  --color-soft: #CCCCCC;
+  --color-muted: #777777;
+  --color-crumb: #929AA7;
+  --color-punctuation: #808080;
+  --color-accent-pink: #FF6FD8;
+  --color-accent-teal: #4EC9B0;
+  --color-comment: #6A9A58;
+  --color-highlight: #4DBBF6;
+}
+
 html{
   width: 100%;
   height: 100%;

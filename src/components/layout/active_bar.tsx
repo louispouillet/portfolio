@@ -10,12 +10,12 @@ type ActiveBarProps = {
 
 const ActiveBar = ({ openPages, activePage, onSelectPage, onClosePage }: ActiveBarProps) => {
     return (
-    <div className="flex flex-row bg-[#2D2D2D]">
+    <div className="flex flex-row bg-bar">
 
       {openPages.map((page) => {
         const { fileName, icon: Icon, iconClassName } = PAGE_BY_KEY[page];
         return (
-        <div key={page} className={`group flex items-center px-3 py-2 text-sm cursor-pointer border-[#3D3D3D] border-r ${ activePage === page ? "bg-[#1E1E1E] text-white border-t-[#1808f0] border-t" : "text-gray-400 hover:text-white border-[#3D3D3D] border-t"}`}
+        <div key={page} className={`group flex items-center px-3 py-2 text-sm cursor-pointer border-line border-r ${ activePage === page ? "bg-editor text-white border-t-[#1808f0] border-t" : "text-gray-400 hover:text-white border-line border-t"}`}
     onClick={() => onSelectPage(page)}
   >
     <span><Icon className={iconClassName} /></span>

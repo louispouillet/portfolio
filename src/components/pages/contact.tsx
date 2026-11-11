@@ -47,9 +47,9 @@ function recordSubmission() {
 type FormState = "idle" | "sending" | "success" | "error" | "rate_limited";
 
 const inputClass =
-  "w-full bg-[#2A2A2A] border border-[#444] rounded text-white font-mono text-sm px-3 py-2 outline-none focus:border-[#4EC9B0] transition-colors placeholder:text-[#555]";
+  "w-full bg-[#2A2A2A] border border-[#444] rounded text-white font-mono text-sm px-3 py-2 outline-none focus:border-accent-teal transition-colors placeholder:text-[#555]";
 
-const labelClass = "font-mono text-[#777] text-xs tracking-widest";
+const labelClass = "font-mono text-muted text-xs tracking-widest";
 
 const Contact = () => {
   const language = useLanguage();
@@ -85,8 +85,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex h-full w-full flex-col overflow-x-hidden bg-[#1E1E1E] px-4 py-4 sm:px-8 sm:py-6 pb-10">
-      <span className="border-l -mt-3 -ml-2 lg:-mt-5 border-[#929AA7] lg:-ml-6 pl-1 text-xs text-[#C0C0C0] sm:text-sm font-mono hidden sm:block">
+    <div className="flex h-full w-full flex-col overflow-x-hidden bg-editor px-4 py-4 sm:px-8 sm:py-6 pb-10">
+      <span className="border-l -mt-3 -ml-2 lg:-mt-5 border-crumb lg:-ml-6 pl-1 text-xs text-soft sm:text-sm font-mono hidden sm:block">
         louis {'>'} portfolio {'>'} src {'>'}{' '}
         <span className="text-white">contact.css</span>
       </span>
@@ -97,7 +97,7 @@ const Contact = () => {
 
       <div className="slide-up delay-2 mt-5 flex flex-row items-end gap-1 sm:justify-start lg:ml-3">
         <FaCss3Alt className="text-4xl text-[#1608CE] sm:text-6xl lg:text-6xl" />
-        <span style={{ fontFamily: "poppins" }} className="ml-3 text-3xl font-extrabold tracking-[-1px] text-white sm:text-6xl sm:tracking-[-2px] lg:text-6xl lg:tracking-[-2.5px]">
+        <span className="font-display ml-3 text-3xl font-extrabold tracking-[-1px] text-white sm:text-6xl sm:tracking-[-2px] lg:text-6xl lg:tracking-[-2.5px]">
           {text.title}
         </span>
       </div>
@@ -109,7 +109,7 @@ const Contact = () => {
             <div className="flex flex-col gap-1">
               <span className="font-mono text-white font-bold text-xl tracking-tight">{FULL_NAME}</span>
               <span className="font-mono text-[#666] text-sm">{text.role}</span>
-              <span className="font-mono text-[#4EC9B0] text-xs mt-2 flex items-center gap-1.5">
+              <span className="font-mono text-accent-teal text-xs mt-2 flex items-center gap-1.5">
                 <VscCircleFilled className="text-[8px] animate-pulse" />
                 {text.availability}
               </span>
@@ -119,7 +119,7 @@ const Contact = () => {
               {facts.map((fact) => (
                 <div key={fact.label}>
                   <span className="text-[#4a4a4a] text-[10px] tracking-widest uppercase block">{fact.label}</span>
-                  <span className="text-[#CCC] text-sm mt-0.5 block">{fact.value}</span>
+                  <span className="text-soft text-sm mt-0.5 block">{fact.value}</span>
                 </div>
               ))}
             </div>
@@ -130,7 +130,7 @@ const Contact = () => {
         </div>
 
         <div className="flex flex-col gap-3">
-          <span className="font-mono italic text-[#4EC9B0] text-lg tracking-wider">{text.findMe}</span>
+          <span className="font-mono italic text-accent-teal text-lg tracking-wider">{text.findMe}</span>
           {CONTACT_LINKS.map(({ id, label, handle, href, icon: Icon, isExternal, cardClassName, iconClassName, labelClassName, arrowClassName }) => (
             <a
               key={id}
@@ -150,8 +150,8 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="slide-up delay-4 mt-6 lg:ml-3 bg-[#232323] border border-[#777] rounded-[5px] p-6 lg:w-[calc(100%-0.75rem)]">
-        <span className="font-mono italic text-[#4EC9B0] text-lg tracking-wider">{text.form.title}</span>
+      <div className="slide-up delay-4 mt-6 lg:ml-3 bg-surface border border-muted rounded-[5px] p-6 lg:w-[calc(100%-0.75rem)]">
+        <span className="font-mono italic text-accent-teal text-lg tracking-wider">{text.form.title}</span>
         <form ref={formRef} onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
@@ -207,7 +207,7 @@ const Contact = () => {
           </div>
 
           {formState === "success" && (
-            <span className="font-mono text-[#4EC9B0] text-sm">{text.form.success}</span>
+            <span className="font-mono text-accent-teal text-sm">{text.form.success}</span>
           )}
           {formState === "error" && (
             <span className="font-mono text-[#F87171] text-sm">{text.form.error}</span>
