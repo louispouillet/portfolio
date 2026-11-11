@@ -9,20 +9,13 @@ import Experience from "../components/pages/experience";
 import Home from "../components/pages/home";
 import Projects from "../components/pages/projects";
 import Skills from "../components/pages/skills";
-
-export const PAGE_KEYS = ["home", "about", "projects", "skills", "experience", "contact"] as const;
-
-export type PageKey = (typeof PAGE_KEYS)[number];
-
-export type PageProps = {
-  onSelectPage: (page: PageKey) => void;
-};
+import { PAGE_KEYS, type PageKey } from "./routes";
 
 type PageDefinition = {
   fileName: string;
   icon: IconType;
   iconClassName: string;
-  component: ComponentType<PageProps>;
+  component: ComponentType;
 };
 
 export const PAGE_BY_KEY: Record<PageKey, PageDefinition> = {

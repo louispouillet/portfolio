@@ -1,59 +1,21 @@
-import { useState } from 'react';
-import MenuBar from './components/layout/Menu_Bar';
-import TopBar from './components/layout/Top_bar';
-import LeftBar from './components/layout/Left_Bar';
-import FilesBar from './components/layout/Files_Bar';
-import ActiveBar from './components/layout/active_bar';
-import PhoneBar from './components/layout/phone_bar';
-import { PAGE_BY_KEY, type PageKey } from './config/pages';
-
+import { Navigate, useParams } from 'react-router-dom';
+import Editor from './components/layout/Editor';
+import { isLanguage, isPageKey, pagePath } from './config/routes';
 
 function App() {
-  const [activePage, setActivePage] = useState<PageKey>('home');
-  const [openPages, setOpenPages] = useState<PageKey[]>(['home']);
-  const ActivePage = PAGE_BY_KEY[activePage].component;
+  const { language, page } = useParams();
 
-  const handleSelectPage = (page: PageKey) => {
-    if (!openPages.includes(page)) {
-      setOpenPages([...openPages, page]);
-    }
-
-    setActivePage(page);
-  };
-
-  const handleClosePage = (page: PageKey) => {
-  const newPages = openPages.filter(p => p !== page);
-  setOpenPages(newPages);
-
-  if (activePage === page) {
-    setActivePage(newPages[newPages.length - 1] || "home");
+  if (!isLanguage(language)) {
+    return <Navigate to="/" replace />;
   }
-};
-  return (
-    <div className='w-full h-full'>
-      <div className='hidden sm:block'>
-        <TopBar />
-        <MenuBar />
-      </div>
-      <div className='flex flex-row w-full h-full'>
-        <div className='hidden sm:block'>
-          <LeftBar />
-        </div>
-        <div className='hidden sm:block'>
-          <FilesBar activePage={activePage} onSelectPage={handleSelectPage} />
-        </div>
-        <div className='flex flex-col flex-1 h-full'>
-          <div className='hidden sm:block'>
-            <ActiveBar openPages={openPages} activePage={activePage} onSelectPage={handleSelectPage} onClosePage={handleClosePage} />
-          </div>
-          <div className='block sm:hidden'>
-            <PhoneBar activePage={activePage} onSelectPage={handleSelectPage} />
-          </div>
-          <ActivePage onSelectPage={handleSelectPage} />
-        </div>
-      </div>
-    </div>
-  )
+
+  const activePage = page ?? 'home';
+
+  if (!isPageKey(activePage) || page === 'home') {
+    return <Navigate to={pagePath({ language, page: 'home' })} replace />;
+  }
+
+  return <Editor language={language} activePage={activePage} />;
 }
 
 export default App
