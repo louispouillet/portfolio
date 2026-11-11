@@ -6,9 +6,12 @@ import { FaCodepen } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import { TiHeartHalfOutline } from "react-icons/ti";
-import type { PageProps } from "../../config/pages";
+import { Link } from "react-router-dom";
+import { pagePath } from "../../config/routes";
+import { useLanguage } from "../../hooks/useLanguage";
 
-const Home = ({ onSelectPage }: PageProps) => {
+const Home = () => {
+  const language = useLanguage();
   const Text = ["// hello and welcome to my portfolio", "// I am passionate about software development", "// always learning", "// currently studying at epitech", "// feel free to explore and contact me !"];
 
   return (
@@ -44,9 +47,9 @@ const Home = ({ onSelectPage }: PageProps) => {
         </div>
         <span className="slide-up delay-6 mt-8 px-4 text-sm leading-relaxed text-[#777] sm:px-8 sm:text-base lg:max-w-3xl lg:px-16">Currently studying at <span className="text-[#4EC1FF]">Epitech Toulouse</span>, I am learning <span className="text-[#4EC1FF]">data analysis</span> and <span className="text-[#4EC1FF]">web development</span>. I’m passionate about discovering new technologies and constantly expanding my skills.</span>
         <div className="slide-up delay-7 mt-8 flex flex-wrap gap-3 px-4 sm:px-8 lg:gap-6 lg:px-16">
-          <button onClick={() => onSelectPage("contact")} className="flex items-center gap-2 rounded bg-[#034672] p-2 text-sm italic text-white transition-colors hover:bg-[#3295d6] cursor-grab"><FaEnvelope />Contact</button>
-          <button onClick={() => onSelectPage("projects")} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-[#2D2D2D] cursor-grab"><FaCodepen />Projects</button>
-          <button onClick={() => onSelectPage("about")} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-[#2D2D2D] cursor-grab"><FaUserAstronaut />About Me</button>
+          <Link to={pagePath({ language, page: "contact" })} className="flex items-center gap-2 rounded bg-[#034672] p-2 text-sm italic text-white transition-colors hover:bg-[#3295d6] cursor-grab"><FaEnvelope />Contact</Link>
+          <Link to={pagePath({ language, page: "projects" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-[#2D2D2D] cursor-grab"><FaCodepen />Projects</Link>
+          <Link to={pagePath({ language, page: "about" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-[#2D2D2D] cursor-grab"><FaUserAstronaut />About Me</Link>
         </div>
         <div className="slide-up delay-8 mt-8 px-4 pb-6 sm:px-8 lg:px-16">
           <div className="grid grid-cols-2 border border-[#3C3C3C] bg-[#2D2D2D] sm:grid-cols-4">

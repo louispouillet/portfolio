@@ -1,5 +1,6 @@
 import "@fontsource/jetbrains-mono/400.css";
-import { PAGE_BY_KEY, type PageKey } from "../../config/pages";
+import { PAGE_BY_KEY } from "../../config/pages";
+import type { PageKey } from "../../config/routes";
 
 type ActiveBarProps = {
     openPages: PageKey[];

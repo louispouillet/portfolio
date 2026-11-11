@@ -3,20 +3,15 @@ import { IoMenuSharp } from "react-icons/io5";
 import { GoCopilot } from "react-icons/go";
 import FilesBar from "./Files_Bar";
 import { useState } from "react";
-import type { PageKey } from "../../config/pages";
+import type { Language, PageKey } from "../../config/routes";
 
 type PhoneBarProps = {
+  language: Language;
   activePage: PageKey;
-  onSelectPage: (page: PageKey) => void;
 };
 
-const PhoneBar = ({activePage, onSelectPage}: PhoneBarProps) => {
+const PhoneBar = ({ language, activePage }: PhoneBarProps) => {
     const [isFilesBarOpen, setIsFilesBarOpen] = useState(false);
-
-    const handleSelectPage = (page: PageKey) => {
-      onSelectPage(page);
-      setIsFilesBarOpen(false);
-    };
 
     return (
       <>
@@ -27,7 +22,7 @@ const PhoneBar = ({activePage, onSelectPage}: PhoneBarProps) => {
         </div>
         {isFilesBarOpen && (
           <div className="fixed top-12 left-0 h-full z-50 sm:hidden">
-            <FilesBar activePage={activePage} onSelectPage={handleSelectPage} />
+            <FilesBar language={language} activePage={activePage} onNavigate={() => setIsFilesBarOpen(false)} />
           </div>
         )}
       </>

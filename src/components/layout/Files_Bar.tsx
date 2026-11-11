@@ -1,16 +1,19 @@
 import "@fontsource/jetbrains-mono/400.css";
 import { FaFilePdf } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import cvPdf from "../../assets/documents/Louis_Pouillet_cv.pdf";
-import { PAGES, type PageKey } from "../../config/pages";
+import { PAGES } from "../../config/pages";
+import { pagePath, type Language, type PageKey } from "../../config/routes";
 
 type FilesBarProps = {
+  language: Language;
   activePage: PageKey;
-  onSelectPage: (page: PageKey) => void;
+  onNavigate?: () => void;
 };
 
-const FilesBar = ({ activePage, onSelectPage }: FilesBarProps) => {
+const FilesBar = ({ language, activePage, onNavigate }: FilesBarProps) => {
   const getItemClassName = (page: PageKey) =>
-    `transition w-full text-left p-0 border-0 cursor-pointer ${
+    `transition block w-full text-left p-0 border-0 cursor-pointer ${
       activePage === page ? "bg-[#343435] text-white" : "hover:bg-[#343435] text-gray-400"
     }`;
 
@@ -19,10 +22,10 @@ const FilesBar = ({ activePage, onSelectPage }: FilesBarProps) => {
       <span className="text-[0.7rem] text-[#CCC] font-mono ml-2">PORTFOLIO</span>
       <div className="flex flex-col gap-1">
         {PAGES.map(({ key, fileName, icon: Icon, iconClassName }) => (
-          <button key={key} type="button" onClick={() => onSelectPage(key)} className={getItemClassName(key)}>
+          <Link key={key} to={pagePath({ language, page: key })} onClick={onNavigate} className={getItemClassName(key)}>
             <Icon className={`${iconClassName} inline-block ml-2`} />
             <span className="pl-[25%] text-[0.7rem] font-mono">{fileName}</span>
-          </button>
+          </Link>
         ))}
         <a href={cvPdf} download="Louis_Pouillet_cv.pdf" className="hover:bg-[#343435] transition cursor-pointer w-full block p-0 border-0">
             <FaFilePdf className="text-[#f10707] inline-block ml-2" />
