@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PAGE_BY_KEY } from "../../config/pages";
 import { pagePath, type Language, type PageKey } from "../../config/routes";
@@ -27,6 +27,10 @@ const Editor = ({ language, activePage }: EditorProps) => {
     }
   }
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   const handleSelectPage = (page: PageKey) => {
     navigate(pagePath({ language, page }));
   };
@@ -43,7 +47,7 @@ const Editor = ({ language, activePage }: EditorProps) => {
   return (
     <div className='w-full h-full'>
       <div className='hidden sm:block'>
-        <TopBar />
+        <TopBar language={language} activePage={activePage} />
         <MenuBar />
       </div>
       <div className='flex flex-row w-full h-full'>

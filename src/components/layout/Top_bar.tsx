@@ -1,7 +1,14 @@
 import "@fontsource/jetbrains-mono/400.css";
 import { CiSearch } from "react-icons/ci";
+import type { Language, PageKey } from "../../config/routes";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const TopBar = () => {
+type TopBarProps = {
+  language: Language;
+  activePage: PageKey;
+};
+
+const TopBar = ({ language, activePage }: TopBarProps) => {
     return (
     <div className="flex items-center justify-between px-4 py-0.4 bg-[#1A1A2E] font-mono">
       
@@ -22,7 +29,7 @@ const TopBar = () => {
         </span>
       </div>
 
-      <div className="w-12"></div>
+      <LanguageSwitcher language={language} activePage={activePage} className="w-12 justify-end" />
     </div>
   );
 };
