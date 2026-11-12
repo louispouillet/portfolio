@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of Louis Pouillet, developer building AWS serverless backends and React frontends.
 
-Currently, two official plugins are available:
+The site is styled as a code editor: each page is a file opened in a tab (`home.tsx`, `about.html`, `projects.js`, `skills.json`, `experience.ts`, `contact.css`), with a file explorer on desktop and a menu on mobile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It is available in English and French. The language is part of the URL (`/en/projects`, `/fr/projects`), and `/` redirects to the browser language.
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React 19 and TypeScript
+* Vite
+* Tailwind CSS 4
+* React Router
+* EmailJS for the contact form
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Requirements: Node.js 20 or later.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The site runs on http://localhost:5173.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command | Description |
+|---|---|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Type checks and builds the site into `dist/` |
+| `npm run preview` | Serves the production build locally |
+| `npm run lint` | Runs ESLint |
+
+## Structure
+
+```text
+src/
+├── assets/          # images and the resume PDF
+├── components/
+│   ├── content/     # cards and items rendered from data (projects, experiences, skills)
+│   ├── layout/      # editor chrome: title bar, menu, file explorer, tabs, mobile bar
+│   ├── pages/       # one component per page
+│   └── ui/          # shared building blocks (page layout, header, card, tag)
+├── config/          # languages, routes and the page registry
+├── data/            # site content, typed and bilingual
+├── hooks/           # useLanguage
+├── i18n/            # localized types, interface texts and formatting
+├── styles/          # animations
+├── App.tsx          # validates the language and page from the URL
+└── main.tsx         # entry point and routes
 ```
+
+## Editing the content
+
+* Projects, experiences, education, skills and contact links live in `src/data/`. Adding an entry is enough to show it on the site.
+* Interface texts live in `src/i18n/ui.ts`.
+* Every text is written as `{ en: "...", fr: "..." }`. A missing language fails the type check.
+* In descriptions, `**word**` is highlighted.
+* Theme colors and fonts are defined once in `src/index.css` (`@theme`).

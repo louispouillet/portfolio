@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import "@fontsource/jetbrains-mono/400.css";
 
 const MenuButton = ({ title, options }: { title: string; options: string[] }) => {
   const [open, setOpen] = useState(false);
@@ -18,18 +17,18 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
   return (
     <div className="relative inline-block" ref={ref}>
       <span
-        className="px-3 py-1 rounded hover:bg-[#404051] transition duration-200 cursor-default font-mono text-[0.7vw] text-[#CCC]"
+        className="px-3 py-1 rounded hover:bg-hover transition duration-200 cursor-default font-mono text-[0.7vw] text-soft"
         onClick={() => setOpen(!open)}
       >
         {title}
       </span>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 w-48 bg-[#2D2D2D] text-[#CCC] rounded shadow-lg z-50 font-mono text-[0.7vw]">
+        <div className="absolute top-full left-0 mt-1 w-48 bg-bar text-soft rounded shadow-lg z-50 font-mono text-[0.7vw]">
           {options.map((opt: string, i: number) => (
             <button
               key={i}
-              className="w-full text-left px-3 py-1 hover:bg-[#404051] transition cursor-default"
+              className="w-full text-left px-3 py-1 hover:bg-hover transition cursor-default"
               onClick={() => {
                 setOpen(false);
               }}
@@ -45,7 +44,7 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
 
 const MenuBar = () => {
   return (
-    <div className="flex gap-6 px-1 bg-[#2D2D2D] w-full text-[#CCC] font-mono py-0.9 border-[#3D3D3D] border-t">
+    <div className="flex gap-6 px-1 bg-bar w-full text-soft font-mono py-0.9 border-line border-t">
       <MenuButton
         title="File"
         options={["New File", "Open File...", "Save", "Exit"]}
