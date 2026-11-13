@@ -3,6 +3,9 @@ import { FaGamepad, FaRocket, FaUserSecret, FaXRay } from "react-icons/fa";
 import { FaTrainSubway } from "react-icons/fa6";
 import { MdLockPerson, MdNewspaper, MdQrCode2, MdReceiptLong, MdVideoLibrary } from "react-icons/md";
 import { TbCherryFilled } from "react-icons/tb";
+import startTrekLandingMp4 from "../assets/media/starttrek-landing.mp4";
+import startTrekLandingPoster from "../assets/media/starttrek-landing-poster.webp";
+import startTrekLandingWebm from "../assets/media/starttrek-landing.webm";
 import type { LocalizableText, Localized } from "../i18n/types";
 
 export type ProjectAccent = "pink" | "teal";
@@ -329,6 +332,15 @@ export const PROJECTS: Project[] = [
     },
     stack: ["Python", "PyTorch", "Gymnasium"],
     repositoryUrl: "https://github.com/louispouillet/starttrek",
+    media: {
+      mp4: startTrekLandingMp4,
+      webm: startTrekLandingWebm,
+      poster: startTrekLandingPoster,
+      alt: {
+        en: "The PPO agent lands the lunar module, episode scored 290.7",
+        fr: "L'agent PPO pose le module lunaire, épisode noté 290,7",
+      },
+    },
   },
   {
     id: "codename",

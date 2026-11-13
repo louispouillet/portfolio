@@ -4,6 +4,7 @@ import { pagePath, type Language } from "../../config/routes";
 import type { Project, ProjectAccent } from "../../data/projects";
 import { translate } from "../../i18n/format";
 import { UI_TEXT } from "../../i18n/ui";
+import ProjectVideo from "./ProjectVideo";
 import RichText from "./RichText";
 import Tag from "../ui/Tag";
 
@@ -36,7 +37,7 @@ type ProjectCardProps = {
 };
 
 const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
-  const { id, title, icon: Icon, accent, context, category, description, stack, repositoryUrl, caseStudy } = project;
+  const { id, title, icon: Icon, accent, context, category, description, stack, repositoryUrl, caseStudy, media } = project;
   const accentClasses = ACCENT_CLASSES[accent];
   const variantClasses = VARIANT_CLASSES[variant];
   const linkClasses = `${accentClasses.text} border rounded-sm px-2 py-1 flex items-center gap-1 hover:bg-bar font-mono text-xs`;
@@ -47,6 +48,8 @@ const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
       <span className={`absolute top-0 right-0 w-0.5 h-0 ${accentClasses.line} group-hover:h-full transition-all duration-800 delay-100`}></span>
       <span className={`absolute bottom-0 right-0 h-0.5 w-0 ${accentClasses.line} group-hover:w-full transition-all duration-800 delay-180`}></span>
       <span className={`absolute bottom-0 left-0 w-0.5 h-0 ${accentClasses.line} group-hover:h-full transition-all duration-800 delay-230`}></span>
+
+      {media && <ProjectVideo media={media} language={language} />}
 
       <Icon className={`text-white ${variantClasses.icon}`} />
 
