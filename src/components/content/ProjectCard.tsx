@@ -4,7 +4,7 @@ import { pagePath, type Language } from "../../config/routes";
 import type { Project, ProjectAccent } from "../../data/projects";
 import { translate } from "../../i18n/format";
 import { UI_TEXT } from "../../i18n/ui";
-import ProjectVideo from "./ProjectVideo";
+import ProjectDemoDialog from "./ProjectDemoDialog";
 import RichText from "./RichText";
 import Tag from "../ui/Tag";
 
@@ -49,8 +49,6 @@ const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
       <span className={`absolute bottom-0 right-0 h-0.5 w-0 ${accentClasses.line} group-hover:w-full transition-all duration-800 delay-180`}></span>
       <span className={`absolute bottom-0 left-0 w-0.5 h-0 ${accentClasses.line} group-hover:h-full transition-all duration-800 delay-230`}></span>
 
-      {media && <ProjectVideo media={media} language={language} />}
-
       <Icon className={`text-white ${variantClasses.icon}`} />
 
       <span className={`${accentClasses.text} font-mono text-xs lg:text-sm tracking-[1px] mt-2`}>{category[language]}</span>
@@ -58,6 +56,9 @@ const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
       <div className="flex flex-row items-start justify-between gap-2 lg:mt-2">
         <h3 className={`font-display text-white font-extrabold tracking-[1px] ${variantClasses.title}`}>{translate({ text: title, language })}</h3>
         <div className="flex shrink-0 flex-row gap-2">
+          {media && (
+            <ProjectDemoDialog media={media} title={translate({ text: title, language })} language={language} buttonClassName={`${linkClasses} bg-bar`} />
+          )}
           {caseStudy && (
             <Link to={pagePath({ language, page: "projects", slug: id })} className={`${linkClasses} bg-bar`}>
               {UI_TEXT[language].projects.caseStudyLink}<GoArrowRight />

@@ -57,7 +57,7 @@ const Projects = () => {
       <section className="slide-up delay-6 m-4 mt-8 pb-10 lg:mx-8 2xl:max-w-[70vw]">
         <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.otherTitle}</h2>
         <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {SECONDARY_PROJECTS.map((project) => (
             <ProjectCard key={project.id} project={project} language={language} variant="compact" />
           ))}

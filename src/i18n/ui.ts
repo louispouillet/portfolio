@@ -36,6 +36,8 @@ type UiText = {
     featuredTitle: string;
     otherTitle: string;
     caseStudyLink: string;
+    demoButton: string;
+    demoClose: string;
   };
   services: {
     comment: string;
@@ -137,6 +139,8 @@ export const UI_TEXT: Localized<UiText> = {
       featuredTitle: "FEATURED",
       otherTitle: "OTHER PROJECTS",
       caseStudyLink: "Case study",
+      demoButton: "Demo",
+      demoClose: "Close",
     },
     services: {
       comment: "// What I can build for you",
@@ -236,6 +240,8 @@ export const UI_TEXT: Localized<UiText> = {
       featuredTitle: "À LA UNE",
       otherTitle: "AUTRES PROJETS",
       caseStudyLink: "Étude de cas",
+      demoButton: "Démo",
+      demoClose: "Fermer",
     },
     services: {
       comment: "// Ce que je peux réaliser pour vous",
