@@ -8,7 +8,7 @@ type PageLayoutProps = {
 };
 
 const PageLayout = ({ children, isPadded }: PageLayoutProps) => (
-  <div className={`flex h-full w-full flex-col overflow-x-hidden bg-editor ${isPadded ? PADDED_CLASSES : ""}`}>
+  <div className={`flex min-h-full w-full flex-col overflow-x-hidden bg-editor ${isPadded ? PADDED_CLASSES : ""}`}>
     {children}
   </div>
 );

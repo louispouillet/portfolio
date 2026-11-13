@@ -46,7 +46,7 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
 
 const MenuBar = () => {
   return (
-    <div aria-hidden="true" className="flex gap-6 px-1 py-0.5 bg-bar w-full text-soft font-mono border-line border-t">
+    <div aria-hidden="true" className="flex gap-6 px-1 py-0.5 bg-bar w-full text-soft font-mono border-b border-line">
       <MenuButton
         title="File"
         options={["New File", "Open File...", "Save", "Exit"]}

@@ -56,19 +56,20 @@ const Editor = ({ language, activeTab }: EditorProps) => {
   };
 
   return (
-    <div className='w-full h-full'>
+    <div className='h-dvh w-full lg:px-10 lg:py-7 xl:px-16 xl:py-9'>
+      <div className='mac-window flex h-full w-full flex-col overflow-hidden'>
       <div className='hidden sm:block'>
         <TopBar language={language} activeTab={activeTab} />
         <MenuBar />
       </div>
-      <div className='flex flex-row w-full h-full'>
+      <div className='flex min-h-0 w-full flex-1 flex-row'>
         <div className='hidden sm:block'>
           <ActivityBar />
         </div>
         <div className='hidden sm:block'>
           <FilesBar language={language} activePage={activeTab.page} />
         </div>
-        <div className='flex flex-col flex-1 h-full min-w-0'>
+        <div className='flex min-h-0 min-w-0 flex-1 flex-col'>
           <div className='hidden sm:block'>
             <TabBar openTabs={openTabs} activeTab={activeTab} closeLabel={UI_TEXT[language].common.closeTab} onSelectTab={handleSelectTab} onCloseTab={handleCloseTab} />
           </div>
@@ -76,8 +77,11 @@ const Editor = ({ language, activeTab }: EditorProps) => {
           <div className='block sm:hidden'>
             <PhoneBar language={language} activeTab={activeTab} />
           </div>
-          {activeTab.slug === undefined ? <ActivePage /> : <CaseStudy key={activeTab.slug} slug={activeTab.slug} />}
+          <div key={activeKey} className='min-h-0 flex-1 overflow-y-auto'>
+            {activeTab.slug === undefined ? <ActivePage /> : <CaseStudy slug={activeTab.slug} />}
+          </div>
         </div>
+      </div>
       </div>
     </div>
   );

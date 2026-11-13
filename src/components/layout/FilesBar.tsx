@@ -17,7 +17,7 @@ const FilesBar = ({ language, activePage, onNavigate }: FilesBarProps) => {
     }`;
 
   return (
-    <div className="flex flex-col gap-2 bg-panel w-50 py-2 h-full border-line border">
+    <div className="flex flex-col gap-2 bg-panel w-50 py-2 h-full border-r border-line">
       <span className="text-[0.7rem] text-soft font-mono ml-2">PORTFOLIO</span>
       <div className="flex flex-col gap-1">
         {PAGE_LIST.map(({ key, fileName, icon: Icon, iconClassName }) => (
