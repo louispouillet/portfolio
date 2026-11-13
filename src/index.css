@@ -9,7 +9,9 @@
   --color-panel: #252526;
   --color-bar: #2D2D2D;
   --color-surface: #232323;
-  --color-line: #3C3C3C;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.14);
+  --color-topbar: #1A1A2E;
   --color-hover: #404051;
   --color-soft: #CCCCCC;
   --color-muted: #9A9A9A;
@@ -29,6 +31,7 @@ html{
 body {
   width: 100%;
   height: 100%;
+  background: var(--color-editor);
 }
 
 #body {

@@ -30,15 +30,15 @@ const Home = () => {
         </h1>
         <span className="slide-up delay-4 mt-2 ml-4 inline-block h-0.75 w-[calc(100%-2rem)] max-w-152 bg-linear-to-r from-accent-pink to-editor sm:ml-8 sm:w-md lg:ml-16 lg:w-152"></span>
         <div className="slide-up delay-5 mt-4 flex flex-wrap items-center gap-3 px-4 sm:px-8 lg:px-16">
-          <div className="flex h-auto items-center gap-2 border border-crumb bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
+          <div className="flex h-auto items-center gap-2 rounded-md border border-line-strong bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
             <span className="inline-block w-2 h-2 bg-[#6db205] rounded-full"></span>
             <span className="text-xs text-soft sm:text-sm">{text.badges.student}</span>
           </div>
-          <div className="flex h-auto items-center gap-2 border border-crumb bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
+          <div className="flex h-auto items-center gap-2 rounded-md border border-line-strong bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
             <span className="inline-block w-2 h-2 bg-[#02a076] rounded-full"></span>
             <span className="text-xs text-soft sm:text-sm">{text.badges.passion}</span>
           </div>
-          <div className="flex h-auto items-center gap-2 border border-crumb bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
+          <div className="flex h-auto items-center gap-2 rounded-md border border-line-strong bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
             <span className="inline-block w-2 h-2 bg-accent-pink rounded-full"></span>
             <span className="text-xs text-soft sm:text-sm">{text.badges.city}</span>
           </div>
@@ -51,26 +51,26 @@ const Home = () => {
           <RichText text={text.intro} highlightClassName="text-highlight" />
         </span>
         <div className="slide-up delay-7 mt-8 flex flex-wrap gap-3 px-4 sm:px-8 lg:gap-6 lg:px-16">
-          <Link to={pagePath({ language, page: "contact" })} className="flex items-center gap-2 rounded bg-[#034672] p-2 text-sm italic text-white transition-colors hover:bg-[#3295d6]"><FaEnvelope />{text.actions.contact}</Link>
-          <Link to={pagePath({ language, page: "services" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><SiYaml />{text.actions.services}</Link>
-          <Link to={pagePath({ language, page: "projects" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaCodepen />{text.actions.projects}</Link>
-          <Link to={pagePath({ language, page: "about" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaUserAstronaut />{text.actions.about}</Link>
+          <Link to={pagePath({ language, page: "contact" })} className="flex items-center gap-2 rounded-md bg-[#034672] p-2 text-sm italic text-white transition-colors hover:bg-[#3295d6]"><FaEnvelope />{text.actions.contact}</Link>
+          <Link to={pagePath({ language, page: "services" })} className="flex items-center gap-2 rounded-md border border-white/35 p-2 text-sm italic text-white transition-colors hover:bg-bar"><SiYaml />{text.actions.services}</Link>
+          <Link to={pagePath({ language, page: "projects" })} className="flex items-center gap-2 rounded-md border border-white/35 p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaCodepen />{text.actions.projects}</Link>
+          <Link to={pagePath({ language, page: "about" })} className="flex items-center gap-2 rounded-md border border-white/35 p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaUserAstronaut />{text.actions.about}</Link>
         </div>
         <div className="slide-up delay-8 mt-8 px-4 pb-6 sm:px-8 lg:px-16">
-          <div className="grid grid-cols-2 border border-line bg-bar sm:grid-cols-4">
-            <div className="flex min-w-0 flex-col items-center p-3 text-center hover:bg-line lg:border-r sm:border-r border-r border-b lg:border-b-0 sm:border-b-0 border-editor hover:border-l-accent-pink hover:border-l-2">
+          <div className="grid grid-cols-2 overflow-hidden rounded-lg border border-line bg-bar/60 sm:grid-cols-4">
+            <div className="flex min-w-0 flex-col items-center p-3 text-center hover:bg-line lg:border-r sm:border-r border-r border-b lg:border-b-0 sm:border-b-0 border-line">
               <span className="font-display text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl">{text.stats.yearNumber}<span className="font-display text-sm text-white sm:text-xl lg:text-xl">{text.stats.yearSuffix}</span></span>
               <span className="mt-1 text-xs text-muted sm:text-sm">{text.stats.yearLabel}</span>
             </div>
-            <div className="flex min-w-0 flex-col p-3 items-center text-center hover:bg-line lg:border-r sm:border-r border-b lg:border-b-0 sm:border-b-0 border-editor hover:border-l-accent-pink hover:border-l-2">
+            <div className="flex min-w-0 flex-col p-3 items-center text-center hover:bg-line lg:border-r sm:border-r border-b lg:border-b-0 sm:border-b-0 border-line">
               <span className="font-display text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl">{text.stats.peerValue}</span>
               <span className="mt-1 text-xs text-muted sm:text-sm">{text.stats.peerLabel}</span>
             </div>
-            <div className="flex min-w-0 flex-col p-3 items-center text-center hover:bg-line lg:border-r sm:border-r border-r border-editor hover:border-l-accent-pink hover:border-l-2">
+            <div className="flex min-w-0 flex-col p-3 items-center text-center hover:bg-line lg:border-r sm:border-r border-r border-line">
               <span className="font-display text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl"><TiHeartHalfOutline /></span>
               <span className="mt-1 text-xs text-muted sm:text-sm">{text.stats.algorithmsLabel}</span>
             </div>
-            <div className="flex min-w-0 flex-col p-3 items-center text-center hover:bg-line lg:border-r sm:border-r hover:border-l-accent-pink hover:border-l-2">
+            <div className="flex min-w-0 flex-col p-3 items-center text-center hover:bg-line lg:border-r sm:border-r">
               <span className="font-display text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl">∞</span>
               <span className="mt-1 text-xs text-muted sm:text-sm">{text.stats.motivationLabel}</span>
             </div>

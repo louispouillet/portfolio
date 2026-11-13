@@ -16,23 +16,30 @@ const PhoneBar = ({ language, activeTab }: PhoneBarProps) => {
 
     return (
       <>
-        <div className="flex flex-row bg-bar h-12 align-items-center gap-2 w-full border-line border">
+        <div className="flex h-12 w-full flex-row items-center gap-2 border-b border-line bg-bar">
             <button
               type="button"
               aria-label={UI_TEXT[language].common.toggleExplorer}
               aria-expanded={isFilesBarOpen}
               onClick={() => setIsFilesBarOpen(!isFilesBarOpen)}
-              className="ml-2 self-center text-soft"
+              className="ml-2 text-soft"
             >
               <IoMenuSharp aria-hidden="true" className="text-4xl" />
             </button>
-            <span className="text-[0.8rem] text-soft font-mono ml-2 mt-4">~/.{tabKey(activeTab)}</span>
+            <span className="ml-2 font-mono text-[0.8rem] text-soft">~/.{tabKey(activeTab)}</span>
             <LanguageSwitcher language={language} activeTab={activeTab} className="ml-auto" />
-            <GoCopilot aria-hidden="true" className="text-2xl text-soft mt-3 mr-4"/>
+            <GoCopilot aria-hidden="true" className="mr-4 text-2xl text-soft"/>
         </div>
         {isFilesBarOpen && (
-          <div className="fixed top-12 left-0 h-full z-50 sm:hidden">
+          <div className="fixed inset-x-0 top-12 bottom-0 z-50 flex sm:hidden">
             <FilesBar language={language} activePage={activeTab.page} onNavigate={() => setIsFilesBarOpen(false)} />
+            <button
+              type="button"
+              tabIndex={-1}
+              aria-hidden="true"
+              onClick={() => setIsFilesBarOpen(false)}
+              className="flex-1 bg-black/50"
+            />
           </div>
         )}
       </>

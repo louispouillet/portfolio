@@ -9,7 +9,7 @@ type TopBarProps = {
 
 const TopBar = ({ language, activeTab }: TopBarProps) => {
     return (
-    <div className="flex items-center justify-between px-4 py-0.4 bg-[#1A1A2E] font-mono">
+    <div className="flex items-center justify-between border-b border-line bg-topbar px-4 py-1 font-mono">
       
       <div className="flex gap-2">
         <span className="w-3 h-3 bg-red-500 rounded-full"></span>
@@ -17,7 +17,7 @@ const TopBar = ({ language, activeTab }: TopBarProps) => {
         <span className="w-3 h-3 bg-green-500 rounded-full"></span>
       </div>
 
-      <div aria-hidden="true" className="bg-[#2a2a40] text-gray-400 text-[0.8rem] px-15 my-0.5 rounded-sm border-hover border flex items-center">
+      <div aria-hidden="true" className="flex items-center rounded-md border border-line-strong bg-white/[0.04] px-15 py-0.5 text-[0.8rem] text-gray-400">
         <CiSearch/>
         <span className="ml-2">Louis : portfolio</span>
         <span className=" ml-2 text-xs bg-[#3a3a5a] px-2 py-0.5 rounded">

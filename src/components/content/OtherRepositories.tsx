@@ -50,7 +50,7 @@ const OtherRepositories = ({ github, language }: OtherRepositoriesProps) => {
               href={repository.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-full flex-col gap-2 rounded border border-line bg-panel p-3 transition-colors hover:border-accent-teal"
+              className="flex h-full flex-col gap-2 rounded-lg border border-line bg-panel p-3 transition-colors hover:border-accent-teal"
             >
               <span className="flex items-center gap-2 font-mono text-sm text-white">
                 <GoRepo className="shrink-0 text-muted" />{repository.name}

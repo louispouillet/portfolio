@@ -50,7 +50,7 @@ function recordSubmission() {
 type FormState = "idle" | "sending" | "success" | "error" | "rate_limited";
 
 const inputClass =
-  "w-full bg-[#2A2A2A] border border-[#444] rounded text-white font-mono text-sm px-3 py-2 outline-none focus:border-accent-teal transition-colors placeholder:text-[#8A8A8A]";
+  "w-full bg-[#2A2A2A] border border-line-strong rounded-md text-white font-mono text-sm px-3 py-2 outline-none focus:border-accent-teal transition-colors placeholder:text-[#8A8A8A]";
 
 const labelClass = "font-mono text-muted text-xs tracking-widest";
 
@@ -94,7 +94,7 @@ const Contact = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8 slide-up delay-3 lg:ml-3">
 
-        <div className="bg-[#1C1C1C] border border-[#333] rounded-lg overflow-hidden flex flex-row hover:border-[#555] transition-all cursor-default shadow-xl">
+        <div className="bg-[#1C1C1C] border border-line rounded-lg overflow-hidden flex flex-row hover:border-line-strong transition-colors shadow-xl">
           <div className="flex flex-col justify-between p-5 flex-1">
             <div className="flex flex-col gap-1">
               <span className="font-mono text-white font-bold text-xl tracking-tight">{FULL_NAME}</span>
@@ -127,9 +127,9 @@ const Contact = () => {
               href={href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
-              className={`flex flex-row gap-1 border border-[#787E88] px-3 py-3 items-center rounded transition-colors group ${cardClassName}`}
+              className={`flex flex-row gap-1 border border-line-strong px-3 py-3 items-center rounded-lg transition-colors group ${cardClassName}`}
             >
-              <Icon className={`text-4xl border border-[#333] py-1.5 rounded ${iconClassName}`} />
+              <Icon className={`text-4xl border border-line py-1.5 rounded-md ${iconClassName}`} />
               <div className="flex flex-col ml-2">
                 <span className={`font-mono text-sm ${labelClassName}`}>{translate({ text: label, language })}</span>
                 <span className="font-mono text-[#999] text-xs">{handle}</span>

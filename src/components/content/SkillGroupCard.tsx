@@ -12,7 +12,7 @@ type SkillGroupCardProps = {
 const SkillGroupCard = ({ group, language }: SkillGroupCardProps) => (
   <section className="flex min-w-0 flex-col">
     <h2 className="ml-2 font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem] lg:tracking-[0.1px]">{group.title[language]}</h2>
-    <span className="mt-4 ml-2 mb-5 h-px w-full bg-crumb"></span>
+    <span className="mt-4 ml-2 mb-5 h-px w-full bg-line-strong"></span>
     <ul className="ml-2 flex flex-col gap-3">
       {group.skills.map((skill) => {
         const projects = projectsUsing(skill);

@@ -12,7 +12,7 @@ import PageHeader from "../ui/PageHeader";
 import PageLayout from "../ui/PageLayout";
 
 const ABOUT_CARD_CLASSES = "mt-5 sm:ml-4 lg:w-230 mx-auto sm:mx-0 tracking-[-1.5px]";
-const ABOUT_CARD_HOVER_CLASSES = "transition-colors hover:bg-bar hover:border-t-[#E34C25] hover:border-t-2";
+const ABOUT_CARD_HOVER_CLASSES = "transition-colors hover:bg-bar hover:border-[#E34C25]/60";
 
 const BIO_INSERTS = {
   epitech: (
