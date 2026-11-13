@@ -29,7 +29,7 @@ export const EDUCATION: Education[] = [
     },
     school: "42 Adelaïde",
     location: { en: "Australia", fr: "Australie" },
-    period: { start: { year: 2022 }, end: { year: 2023 } },
+    period: { start: { year: 2023 }, end: { year: 2024 } },
     summary: {
       en: "/* Learned: Algorithms, C, Peer to Peer learning */",
       fr: "/* Appris : algorithmique, C, apprentissage entre pairs */",
@@ -40,7 +40,7 @@ export const EDUCATION: Education[] = [
     degree: { en: "GRADUATED HIGH-SCHOOL", fr: "BACCALAURÉAT" },
     school: "Blaise Pascal Nouméa",
     location: { en: "New Caledonia", fr: "Nouvelle-Calédonie" },
-    period: { start: { year: 2019 }, end: { year: 2022 } },
+    period: { start: { year: 2020 }, end: { year: 2022 } },
     summary: {
       en: "# Graduated with honors and specialized in mathematics and computer science",
       fr: "# Obtenu avec mention, spécialités mathématiques et informatique",
