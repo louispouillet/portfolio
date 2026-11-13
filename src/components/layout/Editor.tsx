@@ -57,8 +57,8 @@ const Editor = ({ language, activeTab }: EditorProps) => {
   };
 
   return (
-    <div className='h-dvh w-full lg:px-10 lg:py-7 xl:px-16 xl:py-9'>
-      <div className='mac-window flex h-full w-full flex-col overflow-hidden'>
+    <div className='h-dvh w-full'>
+      <div className='flex h-full w-full flex-col overflow-hidden bg-editor'>
       <div className='hidden sm:block'>
         <TopBar language={language} activeTab={activeTab} />
         <MenuBar />

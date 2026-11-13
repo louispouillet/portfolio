@@ -31,24 +31,7 @@ html{
 body {
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(1100px 650px at 18% 8%, #2b3550 0%, transparent 60%),
-    radial-gradient(900px 600px at 88% 92%, #3a2a48 0%, transparent 55%),
-    #101116;
-}
-
-.mac-window {
   background: var(--color-editor);
-}
-
-@media (min-width: 1024px) {
-  .mac-window {
-    border-radius: 12px;
-    box-shadow:
-      0 0 0 0.5px rgb(255 255 255 / 0.16),
-      0 30px 80px rgb(0 0 0 / 0.55),
-      0 10px 24px rgb(0 0 0 / 0.35);
-  }
 }
 
 #body {
