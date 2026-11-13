@@ -33,6 +33,9 @@ type UiText = {
     quote: string;
     snippetComment: string;
     snippetBody: string;
+    featuredTitle: string;
+    otherTitle: string;
+    caseStudyLink: string;
   };
   skills: {
     comment: string;
@@ -112,6 +115,9 @@ export const UI_TEXT: Localized<UiText> = {
       quote: "// You don’t learn to walk by following rules. You learn by doing, and by falling over. (Richard Branson)",
       snippetComment: "// Fetch and display my projects",
       snippetBody: "// You will find all my projects below",
+      featuredTitle: "FEATURED",
+      otherTitle: "OTHER PROJECTS",
+      caseStudyLink: "Case study",
     },
     skills: {
       comment: "// I am constantly improving my skills ;",
@@ -189,6 +195,9 @@ export const UI_TEXT: Localized<UiText> = {
       quote: "// On n'apprend pas à marcher en suivant des règles. On apprend en essayant, et en tombant. (Richard Branson)",
       snippetComment: "// Récupère et affiche mes projets",
       snippetBody: "// Vous trouverez tous mes projets ci-dessous",
+      featuredTitle: "À LA UNE",
+      otherTitle: "AUTRES PROJETS",
+      caseStudyLink: "Étude de cas",
     },
     skills: {
       comment: "// J'améliore sans cesse mes compétences ;",
