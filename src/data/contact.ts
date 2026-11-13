@@ -54,7 +54,7 @@ export const CONTACT_LINKS: ContactLink[] = [
     isExternal: true,
     cardClassName: "hover:bg-[#21262D] hover:border-[#0A66C2]",
     iconClassName: "text-[#0A66C2] bg-[#21262D]",
-    labelClassName: "text-[#0A66C2]",
+    labelClassName: "text-[#4C9BE8]",
     arrowClassName: "group-hover:text-[#0A66C2]",
   },
   {
@@ -78,7 +78,7 @@ export const CONTACT_LINKS: ContactLink[] = [
     isExternal: true,
     cardClassName: "hover:bg-[#1A0000] hover:border-[#FF0000]",
     iconClassName: "text-[#FF0000] bg-[#1A0000]",
-    labelClassName: "text-[#FF0000]",
+    labelClassName: "text-[#FF5C5C]",
     arrowClassName: "group-hover:text-[#FF0000]",
   },
   {
@@ -90,7 +90,7 @@ export const CONTACT_LINKS: ContactLink[] = [
     isExternal: true,
     cardClassName: "hover:bg-[#1A0A14] hover:border-[#E1306C]",
     iconClassName: "text-[#E1306C] bg-[#1A0A14]",
-    labelClassName: "text-[#E1306C]",
+    labelClassName: "text-[#F0609A]",
     arrowClassName: "group-hover:text-[#E1306C]",
   },
 ];
