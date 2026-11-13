@@ -4,7 +4,7 @@ Personal portfolio of Louis Pouillet, developer building AWS serverless backends
 
 The site is styled as a code editor: each page is a file opened in a tab (`home.tsx`, `about.html`, `projects.js`, `skills.json`, `experience.ts`, `contact.css`), with a file explorer on desktop and a menu on mobile.
 
-It is available in English and French. The language is part of the URL (`/en/projects`, `/fr/projects`), and `/` redirects to the browser language.
+It is available in English and French. The language is part of the URL (`/en/projects`, `/fr/projects`), and `/` opens the English version, whatever the browser language.
 
 ## Stack
 
