@@ -16,6 +16,7 @@ createRoot(document.getElementById('body')!).render(
       <Routes>
         <Route path="/" element={<Navigate to={`/${detectBrowserLanguage()}`} replace />} />
         <Route path="/:language/:page?" element={<App />} />
+        <Route path="/:language/:page/:slug" element={<App />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PAGE_META } from "../../config/pageMeta";
+import { tabFolders, tabMeta } from "../../config/pageMeta";
 import { PAGE_COMPONENTS } from "../../config/pages";
-import { pagePath, type Language, type PageKey } from "../../config/routes";
+import { pagePath, tabKey, type EditorTab, type Language } from "../../config/routes";
+import CaseStudy from "../pages/CaseStudy";
 import Breadcrumb from "../ui/Breadcrumb";
 import TabBar from "./TabBar";
 import FilesBar from "./FilesBar";
@@ -11,21 +12,24 @@ import MenuBar from "./MenuBar";
 import PhoneBar from "./PhoneBar";
 import TopBar from "./TopBar";
 
+const HOME_TAB: EditorTab = { page: "home" };
+
 type EditorProps = {
   language: Language;
-  activePage: PageKey;
+  activeTab: EditorTab;
 };
 
-const Editor = ({ language, activePage }: EditorProps) => {
+const Editor = ({ language, activeTab }: EditorProps) => {
   const navigate = useNavigate();
-  const [openPages, setOpenPages] = useState<PageKey[]>([activePage]);
-  const [previousActivePage, setPreviousActivePage] = useState<PageKey>(activePage);
-  const ActivePage = PAGE_COMPONENTS[activePage];
+  const activeKey = tabKey(activeTab);
+  const [openTabs, setOpenTabs] = useState<EditorTab[]>([activeTab]);
+  const [previousActiveKey, setPreviousActiveKey] = useState<string>(activeKey);
+  const ActivePage = PAGE_COMPONENTS[activeTab.page];
 
-  if (activePage !== previousActivePage) {
-    setPreviousActivePage(activePage);
-    if (!openPages.includes(activePage)) {
-      setOpenPages([...openPages, activePage]);
+  if (activeKey !== previousActiveKey) {
+    setPreviousActiveKey(activeKey);
+    if (!openTabs.some((tab) => tabKey(tab) === activeKey)) {
+      setOpenTabs([...openTabs, activeTab]);
     }
   }
 
@@ -33,23 +37,24 @@ const Editor = ({ language, activePage }: EditorProps) => {
     document.documentElement.lang = language;
   }, [language]);
 
-  const handleSelectPage = (page: PageKey) => {
-    navigate(pagePath({ language, page }));
+  const handleSelectTab = (tab: EditorTab) => {
+    navigate(pagePath({ language, ...tab }));
   };
 
-  const handleClosePage = (page: PageKey) => {
-    const remainingPages = openPages.filter((openPage) => openPage !== page);
-    setOpenPages(remainingPages);
+  const handleCloseTab = (tab: EditorTab) => {
+    const closedKey = tabKey(tab);
+    const remainingTabs = openTabs.filter((openTab) => tabKey(openTab) !== closedKey);
+    setOpenTabs(remainingTabs);
 
-    if (page === activePage) {
-      navigate(pagePath({ language, page: remainingPages.at(-1) ?? "home" }));
+    if (closedKey === activeKey) {
+      navigate(pagePath({ language, ...(remainingTabs.at(-1) ?? HOME_TAB) }));
     }
   };
 
   return (
     <div className='w-full h-full'>
       <div className='hidden sm:block'>
-        <TopBar language={language} activePage={activePage} />
+        <TopBar language={language} activeTab={activeTab} />
         <MenuBar />
       </div>
       <div className='flex flex-row w-full h-full'>
@@ -57,17 +62,17 @@ const Editor = ({ language, activePage }: EditorProps) => {
           <ActivityBar />
         </div>
         <div className='hidden sm:block'>
-          <FilesBar language={language} activePage={activePage} />
+          <FilesBar language={language} activePage={activeTab.page} />
         </div>
-        <div className='flex flex-col flex-1 h-full'>
+        <div className='flex flex-col flex-1 h-full min-w-0'>
           <div className='hidden sm:block'>
-            <TabBar openPages={openPages} activePage={activePage} onSelectPage={handleSelectPage} onClosePage={handleClosePage} />
+            <TabBar openTabs={openTabs} activeTab={activeTab} onSelectTab={handleSelectTab} onCloseTab={handleCloseTab} />
           </div>
-          <Breadcrumb fileName={PAGE_META[activePage].fileName} />
+          <Breadcrumb folders={tabFolders(activeTab)} fileName={tabMeta(activeTab).fileName} />
           <div className='block sm:hidden'>
-            <PhoneBar language={language} activePage={activePage} />
+            <PhoneBar language={language} activeTab={activeTab} />
           </div>
-          <ActivePage />
+          {activeTab.slug === undefined ? <ActivePage /> : <CaseStudy key={activeTab.slug} slug={activeTab.slug} />}
         </div>
       </div>
     </div>

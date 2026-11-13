@@ -1,6 +1,8 @@
-import { GoArrowUpRight } from "react-icons/go";
-import type { Language } from "../../config/routes";
+import { GoArrowRight, GoArrowUpRight } from "react-icons/go";
+import { Link } from "react-router-dom";
+import { pagePath, type Language } from "../../config/routes";
 import type { Project, ProjectAccent } from "../../data/projects";
+import { UI_TEXT } from "../../i18n/ui";
 import RichText from "./RichText";
 import Tag from "../ui/Tag";
 
@@ -33,9 +35,10 @@ type ProjectCardProps = {
 };
 
 const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
-  const { title, icon: Icon, accent, context, category, description, stack, repositoryUrl } = project;
+  const { id, title, icon: Icon, accent, context, category, description, stack, repositoryUrl, caseStudy } = project;
   const accentClasses = ACCENT_CLASSES[accent];
   const variantClasses = VARIANT_CLASSES[variant];
+  const linkClasses = `${accentClasses.text} border rounded-sm px-2 py-1 flex items-center gap-1 hover:bg-bar font-mono text-xs`;
 
   return (
     <article className={`relative group flex flex-col rounded border border-line overflow-hidden bg-panel ${variantClasses.card}`}>
@@ -50,11 +53,18 @@ const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
 
       <div className="flex flex-row items-start justify-between gap-2 lg:mt-2">
         <h3 className={`font-display text-white font-extrabold tracking-[1px] ${variantClasses.title}`}>{title}</h3>
-        {repositoryUrl && (
-          <a href={repositoryUrl} target="_blank" rel="noopener noreferrer" className={`${accentClasses.text} shrink-0 border rounded-sm px-2 py-1 flex items-center gap-1 hover:bg-bar font-mono text-xs`}>
-            GitHub<GoArrowUpRight />
-          </a>
-        )}
+        <div className="flex shrink-0 flex-row gap-2">
+          {caseStudy && (
+            <Link to={pagePath({ language, page: "projects", slug: id })} className={`${linkClasses} bg-bar`}>
+              {UI_TEXT[language].projects.caseStudyLink}<GoArrowRight />
+            </Link>
+          )}
+          {repositoryUrl && (
+            <a href={repositoryUrl} target="_blank" rel="noopener noreferrer" className={linkClasses}>
+              GitHub<GoArrowUpRight />
+            </a>
+          )}
+        </div>
       </div>
       <span className="font-mono text-xs text-soft">{context.organization} · {context.year} · {context.role[language]}</span>
       <p className={`flex-1 mt-3 text-muted font-mono ${variantClasses.description}`}>

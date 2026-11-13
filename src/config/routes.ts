@@ -8,6 +8,11 @@ export const PAGE_KEYS = ["home", "about", "projects", "skills", "experience", "
 
 export type PageKey = (typeof PAGE_KEYS)[number];
 
+export type EditorTab = {
+  page: PageKey;
+  slug?: string;
+};
+
 export const isLanguage = (value: string | undefined): value is Language =>
   LANGUAGES.some((language) => language === value);
 
@@ -17,5 +22,11 @@ export const isPageKey = (value: string | undefined): value is PageKey =>
 export const detectBrowserLanguage = (): Language =>
   navigator.language.toLowerCase().startsWith("fr") ? "fr" : DEFAULT_LANGUAGE;
 
-export const pagePath = ({ language, page }: { language: Language; page: PageKey }): string =>
-  page === "home" ? `/${language}` : `/${language}/${page}`;
+export const tabKey = ({ page, slug }: EditorTab): string => (slug === undefined ? page : `${page}/${slug}`);
+
+export const pagePath = ({ language, page, slug }: { language: Language } & EditorTab): string => {
+  if (page === "home") {
+    return `/${language}`;
+  }
+  return slug === undefined ? `/${language}/${page}` : `/${language}/${page}/${slug}`;
+};

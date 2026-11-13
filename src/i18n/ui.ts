@@ -37,6 +37,16 @@ type UiText = {
     otherTitle: string;
     caseStudyLink: string;
   };
+  caseStudy: {
+    back: string;
+    contextTitle: string;
+    workTitle: string;
+    architectureTitle: string;
+    choicesTitle: string;
+    outcomeTitle: string;
+    stackTitle: string;
+    repositoryLink: string;
+  };
   skills: {
     comment: string;
     title: string;
@@ -119,6 +129,16 @@ export const UI_TEXT: Localized<UiText> = {
       otherTitle: "OTHER PROJECTS",
       caseStudyLink: "Case study",
     },
+    caseStudy: {
+      back: "All projects",
+      contextTitle: "Context",
+      workTitle: "What I built",
+      architectureTitle: "Architecture",
+      choicesTitle: "Technical choices",
+      outcomeTitle: "Outcome",
+      stackTitle: "Stack",
+      repositoryLink: "View the code on GitHub",
+    },
     skills: {
       comment: "// I am constantly improving my skills ;",
       title: "Skills",
@@ -198,6 +218,16 @@ export const UI_TEXT: Localized<UiText> = {
       featuredTitle: "À LA UNE",
       otherTitle: "AUTRES PROJETS",
       caseStudyLink: "Étude de cas",
+    },
+    caseStudy: {
+      back: "Tous les projets",
+      contextTitle: "Contexte",
+      workTitle: "Ce que j'ai réalisé",
+      architectureTitle: "Architecture",
+      choicesTitle: "Choix techniques",
+      outcomeTitle: "Résultat",
+      stackTitle: "Stack",
+      repositoryLink: "Voir le code sur GitHub",
     },
     skills: {
       comment: "// J'améliore sans cesse mes compétences ;",

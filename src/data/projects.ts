@@ -130,3 +130,8 @@ export const PROJECTS: Project[] = [
 export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.tier === "featured");
 
 export const SECONDARY_PROJECTS = PROJECTS.filter((project) => project.tier === "secondary");
+
+export const findCaseStudyProject = (slug: string): (Project & { caseStudy: CaseStudy }) | undefined => {
+  const project = PROJECTS.find((candidate) => candidate.id === slug);
+  return project?.caseStudy === undefined ? undefined : { ...project, caseStudy: project.caseStudy };
+};
