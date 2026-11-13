@@ -1,30 +1,23 @@
-import type { CSSProperties } from "react";
-import type { Language } from "../../config/routes";
-import type { Skill, SkillGroup } from "../../data/skills";
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { pagePath, type Language } from "../../config/routes";
+import type { Project } from "../../data/projects";
+import { projectsUsing, type SkillGroup } from "../../data/skills";
+import { translate } from "../../i18n/format";
+import Tag from "../ui/Tag";
 
-const BAR_BASE_DELAY_MS = 300;
-const BAR_STEP_DELAY_MS = 250;
-const MAX_LEVEL = 100;
+const PROJECT_LINK_CLASSES = "text-soft underline decoration-line underline-offset-2 transition-colors hover:text-white";
 
-type SkillBarStyle = CSSProperties & { "--skill-level": string };
+const ProjectLink = ({ project, language }: { project: Project; language: Language }) => {
+  const label = translate({ text: project.title, language });
 
-const SkillBar = ({ skill, delayMs }: { skill: Skill; delayMs: number }) => {
-  const level = Math.max(0, Math.min(MAX_LEVEL, skill.level));
-  const fillStyle: SkillBarStyle = {
-    backgroundColor: skill.color,
-    animationDelay: `${delayMs}ms`,
-    "--skill-level": `${level}%`,
-  };
-
-  return (
-    <div className="mb-3 flex flex-row items-center">
-      <span className="w-28 shrink-0 font-mono text-sm text-muted">{skill.name}</span>
-      <div className="h-0.5 flex-1 bg-[#2A2A2A] mr-2 rounded-full overflow-hidden">
-        <div className="skill-bar-fill h-0.5 rounded-full" style={fillStyle} />
-      </div>
-      <span className="font-mono text-sm text-[#99A1AF]">{level}%</span>
-    </div>
-  );
+  if (project.caseStudy !== undefined) {
+    return <Link to={pagePath({ language, page: "projects", slug: project.id })} className={PROJECT_LINK_CLASSES}>{label}</Link>;
+  }
+  if (project.repositoryUrl !== undefined) {
+    return <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" className={PROJECT_LINK_CLASSES}>{label}</a>;
+  }
+  return <span>{label}</span>;
 };
 
 type SkillGroupCardProps = {
@@ -33,15 +26,30 @@ type SkillGroupCardProps = {
 };
 
 const SkillGroupCard = ({ group, language }: SkillGroupCardProps) => (
-  <div className="flex min-w-0 flex-col">
-    <span className="ml-2 font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem] lg:tracking-[0.1px]">{group.title[language]}</span>
-    <span className="mt-4 ml-2 h-px w-full bg-crumb mb-5"></span>
-    <div className="ml-2">
-      {group.skills.map((skill, index) => (
-        <SkillBar key={skill.name} skill={skill} delayMs={BAR_BASE_DELAY_MS + index * BAR_STEP_DELAY_MS} />
-      ))}
-    </div>
-  </div>
+  <section className="flex min-w-0 flex-col">
+    <h2 className="ml-2 font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem] lg:tracking-[0.1px]">{group.title[language]}</h2>
+    <span className="mt-4 ml-2 mb-5 h-px w-full bg-crumb"></span>
+    <ul className="ml-2 flex flex-col gap-3">
+      {group.skills.map((skill) => {
+        const projects = projectsUsing(skill);
+        return (
+          <li key={skill} className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
+            <span className="shrink-0 sm:w-44"><Tag label={skill} variant="neutral" /></span>
+            {projects.length > 0 && (
+              <span className="font-mono text-xs text-muted">
+                {projects.map((project, index) => (
+                  <Fragment key={project.id}>
+                    {index > 0 && <span className="text-muted"> · </span>}
+                    <ProjectLink project={project} language={language} />
+                  </Fragment>
+                ))}
+              </span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </section>
 );
 
 export default SkillGroupCard;
