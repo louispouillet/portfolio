@@ -98,13 +98,13 @@ export const UI_TEXT: Localized<UiText> = {
         "// currently studying at epitech",
         "// feel free to explore and contact me !",
       ],
-      badges: { student: "IT student", passion: "software passionate", city: "toulouse" },
+      badges: { student: "freelance developer", passion: "software passionate", city: "toulouse" },
       intro:
-        "Currently studying at **Epitech Toulouse**, I am learning **data analysis** and **web development**. I’m passionate about discovering new technologies and constantly expanding my skills.",
+        "Second year student at **Epitech Toulouse** and **freelance developer**. After a three month internship building **AWS serverless** applications at Sigterm, I build backends, web apps and automations for businesses.",
       actions: { contact: "Contact", projects: "Projects", about: "About Me" },
       stats: {
-        yearNumber: "1",
-        yearSuffix: "st",
+        yearNumber: "2",
+        yearSuffix: "nd",
         yearLabel: "year",
         peerValue: "Peer",
         peerLabel: "learning",
@@ -153,8 +153,8 @@ export const UI_TEXT: Localized<UiText> = {
     contact: {
       comment: "// Contact me if you have any questions or would like to collaborate!",
       title: "Contact",
-      role: "IT Student · Epitech",
-      availability: "Open to opportunities",
+      role: "Freelance developer · Epitech student",
+      availability: "Available for freelance projects",
       findMe: "FIND ME",
       facts: { location: "Location", school: "School", languages: "Languages", year: "Year" },
       form: {
@@ -188,13 +188,13 @@ export const UI_TEXT: Localized<UiText> = {
         "// actuellement étudiant à epitech",
         "// n'hésitez pas à explorer et à me contacter !",
       ],
-      badges: { student: "étudiant en informatique", passion: "passionné de logiciel", city: "toulouse" },
+      badges: { student: "développeur freelance", passion: "passionné de logiciel", city: "toulouse" },
       intro:
-        "Actuellement étudiant à **Epitech Toulouse**, j'apprends l'**analyse de données** et le **développement web**. Je suis passionné par la découverte de nouvelles technologies et j'enrichis sans cesse mes compétences.",
+        "Étudiant en 2e année à **Epitech Toulouse** et **développeur freelance**. Après un stage de trois mois à construire des applications **AWS serverless** chez Sigterm, je développe des backends, des applications web et des automatisations pour les entreprises.",
       actions: { contact: "Contact", projects: "Projets", about: "À propos" },
       stats: {
-        yearNumber: "1",
-        yearSuffix: "re",
+        yearNumber: "2",
+        yearSuffix: "e",
         yearLabel: "année",
         peerValue: "Peer",
         peerLabel: "learning",
@@ -243,8 +243,8 @@ export const UI_TEXT: Localized<UiText> = {
     contact: {
       comment: "// Contactez-moi pour toute question ou pour collaborer !",
       title: "Contact",
-      role: "Étudiant en informatique · Epitech",
-      availability: "Ouvert aux opportunités",
+      role: "Développeur freelance · Étudiant à Epitech",
+      availability: "Disponible pour des missions freelance",
       findMe: "ME TROUVER",
       facts: { location: "Localisation", school: "École", languages: "Langues", year: "Année" },
       form: {

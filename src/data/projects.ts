@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
       en: "Restaurant ordering by **QR code**: customers order from their table, staff follow orders live, and the menu stays in sync with the restaurant's **point of sale**. Built with Lilian Davezac.",
       fr: "Commande au restaurant par **QR code** : le client commande depuis sa table, l'équipe suit les commandes en direct et le menu reste synchronisé avec la **caisse** du restaurant. Réalisé avec Lilian Davezac.",
     },
-    stack: ["AWS Lambda", "API Gateway", "DynamoDB", "EventBridge", "Cognito", "Terraform", "AWS SAM", "Python", "React", "TypeScript", "GitHub Actions"],
+    stack: ["AWS Lambda", "API Gateway", "DynamoDB", "EventBridge", "Amazon Cognito", "Terraform", "AWS SAM", "Python", "React", "TypeScript", "GitHub Actions"],
     caseStudy: {
       context: {
         en: "Each table of the restaurant gets a QR code that opens the ordering app. Restaurants already keep their menu in their **point of sale** (Zelty), so the app had to reuse that data instead of asking the staff to type the menu twice.",

@@ -7,13 +7,46 @@ export type Experience = {
   company: string;
   country: Localized;
   description: Localized;
+  highlights?: Localized[];
+  projectIds?: string[];
   skills: LocalizableText[];
 };
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: "sigterm",
+    period: { start: { year: 2026, month: 6 }, end: { year: 2026, month: 8 } },
+    role: { en: "Cloud Developer (Internship)", fr: "Développeur cloud (stage)" },
+    company: "Sigterm",
+    country: { en: "France", fr: "France" },
+    description: {
+      en: "Three month internship at Sigterm, a consulting company specialized in AWS cloud native applications. I worked autonomously on real client projects, from design to deployment.",
+      fr: "Stage de trois mois chez Sigterm, une entreprise de conseil spécialisée dans les applications cloud natives sur AWS. J'ai travaillé en autonomie sur de vrais projets clients, de la conception au déploiement.",
+    },
+    highlights: [
+      {
+        en: "Built Moggo's video auto tagging pipeline: S3, Transcribe, Claude on Bedrock, orchestrated by Step Functions.",
+        fr: "Construit le pipeline de tags automatiques de vidéos de Moggo : S3, Transcribe, Claude sur Bedrock, orchestré par Step Functions.",
+      },
+      {
+        en: "Built an internal expense app where Bedrock reads the receipts and the app sends a PDF summary through Gmail.",
+        fr: "Construit une application interne de notes de frais où Bedrock lit les justificatifs et l'application envoie un récapitulatif PDF via Gmail.",
+      },
+      {
+        en: "Designed a single sign on proof of concept on Cognito for Gladius, then turned it into a shared login library and Terraform module.",
+        fr: "Conçu une preuve de concept d'authentification unique sur Cognito pour Gladius, puis transformée en bibliothèque de connexion et module Terraform partagés.",
+      },
+      {
+        en: "Added a Lambda authorizer that accepts Cognito tokens or API keys to Isarys' API, after auditing the migration of about 110 routes.",
+        fr: "Ajouté à l'API d'Isarys un authorizer Lambda qui accepte les tokens Cognito ou des clés d'API, après un audit de la migration d'environ 110 routes.",
+      },
+    ],
+    projectIds: ["moggo", "reimbursement", "kayzen-sso"],
+    skills: ["AWS Lambda", "AWS Step Functions", "Amazon Bedrock", "Amazon Cognito", "Terraform", "AWS SAM", "Python", "TypeScript"],
+  },
+  {
     id: "adelaide-property-restoration",
-    period: { start: 2024, end: 2025 },
+    period: { start: { year: 2024 }, end: { year: 2025 } },
     role: { en: "Labourer and Painter", fr: "Manœuvre et peintre" },
     company: "Adelaide Property Restoration",
     country: { en: "Australia", fr: "Australie" },
@@ -30,7 +63,7 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     id: "samwell-and-sons",
-    period: { start: 2023, end: 2024 },
+    period: { start: { year: 2023 }, end: { year: 2024 } },
     role: { en: "Farm Job", fr: "Ouvrier agricole" },
     company: "Samwell and Sons",
     country: { en: "Australia", fr: "Australie" },
@@ -47,7 +80,7 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     id: "opt",
-    period: { start: 2021, end: 2022 },
+    period: { start: { year: 2021 }, end: { year: 2022 } },
     role: { en: "Fiber Optic Installer", fr: "Installateur fibre optique" },
     company: "OPT",
     country: { en: "New Caledonia", fr: "Nouvelle-Calédonie" },
