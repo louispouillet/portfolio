@@ -12,6 +12,7 @@ import FilesBar from "./FilesBar";
 import ActivityBar from "./ActivityBar";
 import MenuBar from "./MenuBar";
 import PhoneBar from "./PhoneBar";
+import StatusBar from "./StatusBar";
 import TopBar from "./TopBar";
 
 const HOME_TAB: EditorTab = { page: "home" };
@@ -80,6 +81,7 @@ const Editor = ({ language, activeTab }: EditorProps) => {
           <div key={activeKey} className='min-h-0 flex-1 overflow-y-auto'>
             {activeTab.slug === undefined ? <ActivePage /> : <CaseStudy slug={activeTab.slug} />}
           </div>
+          <StatusBar activeTab={activeTab} />
         </div>
       </div>
       </div>
