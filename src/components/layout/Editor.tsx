@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { tabFolders, tabMeta } from "../../config/pageMeta";
 import { PAGE_COMPONENTS } from "../../config/pages";
 import { pagePath, tabKey, type EditorTab, type Language } from "../../config/routes";
+import { useDocumentMeta } from "../../hooks/useDocumentMeta";
 import CaseStudy from "../pages/CaseStudy";
 import Breadcrumb from "../ui/Breadcrumb";
 import TabBar from "./TabBar";
@@ -36,6 +37,8 @@ const Editor = ({ language, activeTab }: EditorProps) => {
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  useDocumentMeta({ language, tab: activeTab });
 
   const handleSelectTab = (tab: EditorTab) => {
     navigate(pagePath({ language, ...tab }));
