@@ -2,6 +2,7 @@ import { GoArrowRight, GoArrowUpRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { pagePath, type Language } from "../../config/routes";
 import type { Project, ProjectAccent } from "../../data/projects";
+import { translate } from "../../i18n/format";
 import { UI_TEXT } from "../../i18n/ui";
 import RichText from "./RichText";
 import Tag from "../ui/Tag";
@@ -52,7 +53,7 @@ const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
       <span className={`${accentClasses.text} font-mono text-xs lg:text-sm tracking-[1px] mt-2`}>{category[language]}</span>
 
       <div className="flex flex-row items-start justify-between gap-2 lg:mt-2">
-        <h3 className={`font-display text-white font-extrabold tracking-[1px] ${variantClasses.title}`}>{title}</h3>
+        <h3 className={`font-display text-white font-extrabold tracking-[1px] ${variantClasses.title}`}>{translate({ text: title, language })}</h3>
         <div className="flex shrink-0 flex-row gap-2">
           {caseStudy && (
             <Link to={pagePath({ language, page: "projects", slug: id })} className={`${linkClasses} bg-bar`}>

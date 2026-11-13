@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { pagePath } from "../../config/routes";
 import { findCaseStudyProject } from "../../data/projects";
 import { useLanguage } from "../../hooks/useLanguage";
+import { translate } from "../../i18n/format";
 import { UI_TEXT } from "../../i18n/ui";
 import ArchitectureFlow from "../content/ArchitectureFlow";
 import RichText from "../content/RichText";
@@ -15,7 +16,7 @@ import Tag from "../ui/Tag";
 const HIGHLIGHT_CLASS = "text-highlight";
 
 const Section = ({ title, children }: { title: string; children: ReactNode }) => (
-  <section className="mt-8 max-w-4xl lg:ml-3">
+  <section className="mt-8 max-w-5xl lg:ml-3">
     <h2 className="font-mono text-lg text-white"><span className="text-punctuation">## </span>{title}</h2>
     <div className="mt-3 font-mono text-sm leading-relaxed text-soft">{children}</div>
   </section>
@@ -42,7 +43,7 @@ const CaseStudy = ({ slug }: CaseStudyProps) => {
         <GoArrowLeft />{text.back}
       </Link>
       <CodeComment text={`// ${context.organization} · ${context.year} · ${context.role[language]}`} className="mt-4 lg:ml-3" />
-      <PageHeader page="projects" title={title} icon={icon} iconClassName="text-white" className="mt-3 lg:ml-3" />
+      <PageHeader page="projects" title={translate({ text: title, language })} icon={icon} iconClassName="text-white" className="mt-3 lg:ml-3" />
       <p className="slide-up delay-3 mt-5 max-w-4xl font-mono text-base leading-relaxed text-muted lg:ml-3">
         <RichText text={description[language]} highlightClassName={HIGHLIGHT_CLASS} />
       </p>
