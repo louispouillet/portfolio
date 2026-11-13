@@ -4,7 +4,7 @@ export type Language = (typeof LANGUAGES)[number];
 
 export const DEFAULT_LANGUAGE: Language = "en";
 
-export const PAGE_KEYS = ["home", "about", "projects", "skills", "experience", "contact"] as const;
+export const PAGE_KEYS = ["home", "services", "projects", "about", "skills", "experience", "contact"] as const;
 
 export type PageKey = (typeof PAGE_KEYS)[number];
 

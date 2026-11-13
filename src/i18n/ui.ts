@@ -9,7 +9,7 @@ type UiText = {
     typedLines: string[];
     badges: { student: string; passion: string; city: string };
     intro: string;
-    actions: { contact: string; projects: string; about: string };
+    actions: { contact: string; services: string; projects: string; about: string };
     stats: {
       yearNumber: string;
       yearSuffix: string;
@@ -36,6 +36,15 @@ type UiText = {
     featuredTitle: string;
     otherTitle: string;
     caseStudyLink: string;
+  };
+  services: {
+    comment: string;
+    title: string;
+    intro: string;
+    proofTitle: string;
+    ctaTitle: string;
+    ctaText: string;
+    ctaButton: string;
   };
   caseStudy: {
     back: string;
@@ -101,7 +110,7 @@ export const UI_TEXT: Localized<UiText> = {
       badges: { student: "freelance developer", passion: "software passionate", city: "toulouse" },
       intro:
         "Second year student at **Epitech Toulouse** and **freelance developer**. After a three month internship building **AWS serverless** applications at Sigterm, I build backends, web apps and automations for businesses.",
-      actions: { contact: "Contact", projects: "Projects", about: "About Me" },
+      actions: { contact: "Contact", services: "Services", projects: "Projects", about: "About Me" },
       stats: {
         yearNumber: "2",
         yearSuffix: "nd",
@@ -128,6 +137,15 @@ export const UI_TEXT: Localized<UiText> = {
       featuredTitle: "FEATURED",
       otherTitle: "OTHER PROJECTS",
       caseStudyLink: "Case study",
+    },
+    services: {
+      comment: "// What I can build for you",
+      title: "Services",
+      intro: "I work as a **freelance developer** for startups and small businesses. Each offer below is backed by projects I have already delivered.",
+      proofTitle: "Already done in",
+      ctaTitle: "Have a project in mind?",
+      ctaText: "Tell me what you need, even roughly. We will see together what to build and how.",
+      ctaButton: "Discuss your project",
     },
     caseStudy: {
       back: "All projects",
@@ -191,7 +209,7 @@ export const UI_TEXT: Localized<UiText> = {
       badges: { student: "développeur freelance", passion: "passionné de logiciel", city: "toulouse" },
       intro:
         "Étudiant en 2e année à **Epitech Toulouse** et **développeur freelance**. Après un stage de trois mois à construire des applications **AWS serverless** chez Sigterm, je développe des backends, des applications web et des automatisations pour les entreprises.",
-      actions: { contact: "Contact", projects: "Projets", about: "À propos" },
+      actions: { contact: "Contact", services: "Services", projects: "Projets", about: "À propos" },
       stats: {
         yearNumber: "2",
         yearSuffix: "e",
@@ -218,6 +236,15 @@ export const UI_TEXT: Localized<UiText> = {
       featuredTitle: "À LA UNE",
       otherTitle: "AUTRES PROJETS",
       caseStudyLink: "Étude de cas",
+    },
+    services: {
+      comment: "// Ce que je peux réaliser pour vous",
+      title: "Services",
+      intro: "Je travaille comme **développeur freelance** pour des startups et des petites entreprises. Chaque offre ci-dessous s'appuie sur des projets déjà réalisés.",
+      proofTitle: "Déjà réalisé dans",
+      ctaTitle: "Un projet en tête ?",
+      ctaText: "Décrivez-moi votre besoin, même dans les grandes lignes. Nous verrons ensemble quoi construire et comment.",
+      ctaButton: "Parlons de votre projet",
     },
     caseStudy: {
       back: "Tous les projets",

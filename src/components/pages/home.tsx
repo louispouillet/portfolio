@@ -4,6 +4,7 @@ import { FaCodepen } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import { TiHeartHalfOutline } from "react-icons/ti";
+import { SiYaml } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { pagePath } from "../../config/routes";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -47,6 +48,7 @@ const Home = () => {
         </span>
         <div className="slide-up delay-7 mt-8 flex flex-wrap gap-3 px-4 sm:px-8 lg:gap-6 lg:px-16">
           <Link to={pagePath({ language, page: "contact" })} className="flex items-center gap-2 rounded bg-[#034672] p-2 text-sm italic text-white transition-colors hover:bg-[#3295d6]"><FaEnvelope />{text.actions.contact}</Link>
+          <Link to={pagePath({ language, page: "services" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><SiYaml />{text.actions.services}</Link>
           <Link to={pagePath({ language, page: "projects" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaCodepen />{text.actions.projects}</Link>
           <Link to={pagePath({ language, page: "about" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaUserAstronaut />{text.actions.about}</Link>
         </div>
