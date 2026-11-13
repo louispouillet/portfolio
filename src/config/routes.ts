@@ -8,6 +8,8 @@ export const PAGE_KEYS = ["home", "services", "projects", "about", "skills", "ex
 
 export type PageKey = (typeof PAGE_KEYS)[number];
 
+export const CASE_STUDY_SLUGS: readonly string[] = ["yopay", "moggo", "reimbursement", "kayzen-sso"];
+
 export type EditorTab = {
   page: PageKey;
   slug?: string;

@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import Editor from './components/layout/Editor';
-import { isLanguage, isPageKey, pagePath } from './config/routes';
+import { CASE_STUDY_SLUGS, isLanguage, isPageKey, pagePath } from './config/routes';
 import { findCaseStudyProject } from './data/projects';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     return <Navigate to={pagePath({ language, page: 'home' })} replace />;
   }
 
-  if (slug !== undefined && (activePage !== 'projects' || findCaseStudyProject(slug) === undefined)) {
+  if (slug !== undefined && (activePage !== 'projects' || !CASE_STUDY_SLUGS.includes(slug) || findCaseStudyProject(slug) === undefined)) {
     return <Navigate to={pagePath({ language, page: activePage })} replace />;
   }
 
