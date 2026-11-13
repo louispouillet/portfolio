@@ -337,8 +337,8 @@ export const PROJECTS: Project[] = [
       webm: startTrekLandingWebm,
       poster: startTrekLandingPoster,
       alt: {
-        en: "The PPO agent lands the lunar module, episode scored 290.7",
-        fr: "L'agent PPO pose le module lunaire, épisode noté 290,7",
+        en: "The PPO agent lands the lunar module, episode scored 248.9",
+        fr: "L'agent PPO pose le module lunaire, épisode noté 248,9",
       },
     },
   },
