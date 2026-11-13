@@ -38,6 +38,8 @@ type UiText = {
     caseStudyLink: string;
     demoButton: string;
     demoClose: string;
+    updatedLabel: string;
+    starsLabel: string;
   };
   services: {
     comment: string;
@@ -141,6 +143,8 @@ export const UI_TEXT: Localized<UiText> = {
       caseStudyLink: "Case study",
       demoButton: "Demo",
       demoClose: "Close",
+      updatedLabel: "updated",
+      starsLabel: "GitHub stars",
     },
     services: {
       comment: "// What I can build for you",
@@ -242,6 +246,8 @@ export const UI_TEXT: Localized<UiText> = {
       caseStudyLink: "Étude de cas",
       demoButton: "Démo",
       demoClose: "Fermer",
+      updatedLabel: "mis à jour",
+      starsLabel: "étoiles GitHub",
     },
     services: {
       comment: "// Ce que je peux réaliser pour vous",

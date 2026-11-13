@@ -1,4 +1,6 @@
-import { FEATURED_PROJECTS, SECONDARY_PROJECTS } from "../../data/projects";
+import { findRepository, type GitHubRepository } from "../../api/github";
+import { FEATURED_PROJECTS, SECONDARY_PROJECTS, type Project } from "../../data/projects";
+import { useGitHubRepositories } from "../../hooks/useGitHubRepositories";
 import { useLanguage } from "../../hooks/useLanguage";
 import { UI_TEXT } from "../../i18n/ui";
 import ProjectCard from "../content/ProjectCard";
@@ -9,6 +11,11 @@ import PageLayout from "../ui/PageLayout";
 const Projects = () => {
   const language = useLanguage();
   const text = UI_TEXT[language].projects;
+  const github = useGitHubRepositories();
+  const repositoryOf = (project: Project): GitHubRepository | undefined =>
+    github.status === "success" && project.repositoryUrl !== undefined
+      ? findRepository({ repositories: github.repositories, url: project.repositoryUrl })
+      : undefined;
 
   return (
     <PageLayout>
@@ -50,7 +57,7 @@ const Projects = () => {
         <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {FEATURED_PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} language={language} variant="featured" />
+            <ProjectCard key={project.id} project={project} language={language} variant="featured" repository={repositoryOf(project)} />
           ))}
         </div>
       </section>
@@ -59,7 +66,7 @@ const Projects = () => {
         <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
         <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {SECONDARY_PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} language={language} variant="compact" />
+            <ProjectCard key={project.id} project={project} language={language} variant="compact" repository={repositoryOf(project)} />
           ))}
         </div>
       </section>

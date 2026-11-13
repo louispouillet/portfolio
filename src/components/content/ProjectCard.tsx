@@ -1,10 +1,12 @@
 import { GoArrowRight, GoArrowUpRight } from "react-icons/go";
+import type { GitHubRepository } from "../../api/github";
 import { Link } from "react-router-dom";
 import { pagePath, type Language } from "../../config/routes";
 import type { Project, ProjectAccent } from "../../data/projects";
 import { translate } from "../../i18n/format";
 import { UI_TEXT } from "../../i18n/ui";
 import ProjectDemoDialog from "./ProjectDemoDialog";
+import RepositoryStats from "./RepositoryStats";
 import RichText from "./RichText";
 import Tag from "../ui/Tag";
 
@@ -34,9 +36,10 @@ type ProjectCardProps = {
   project: Project;
   language: Language;
   variant: ProjectCardVariant;
+  repository?: GitHubRepository;
 };
 
-const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
+const ProjectCard = ({ project, language, variant, repository }: ProjectCardProps) => {
   const { id, title, icon: Icon, accent, context, category, description, stack, repositoryUrl, caseStudy, media } = project;
   const accentClasses = ACCENT_CLASSES[accent];
   const variantClasses = VARIANT_CLASSES[variant];
@@ -72,6 +75,7 @@ const ProjectCard = ({ project, language, variant }: ProjectCardProps) => {
         </div>
       </div>
       <span className="font-mono text-xs text-soft">{context.organization} · {context.year} · {context.role[language]}</span>
+      {repository && <RepositoryStats repository={repository} language={language} className="mt-1" />}
       <p className={`flex-1 mt-3 text-muted font-mono ${variantClasses.description}`}>
         <RichText text={description[language]} highlightClassName={accentClasses.highlight} />
       </p>
