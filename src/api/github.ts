@@ -17,7 +17,7 @@ export type GitHubRepository = {
 
 type CacheEntry = {
   savedAt: number;
-  repositories: GitHubRepository[];
+  payload: unknown;
 };
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
@@ -55,14 +55,14 @@ export const readCachedRepositories = (): GitHubRepository[] | undefined => {
     if (!isRecord(entry) || typeof entry.savedAt !== "number" || Date.now() - entry.savedAt > CACHE_TTL_MS) {
       return undefined;
     }
-    return parseRepositories(entry.repositories);
+    return parseRepositories(entry.payload);
   } catch {
     return undefined;
   }
 };
 
-const writeCachedRepositories = (repositories: GitHubRepository[]): void => {
-  const entry: CacheEntry = { savedAt: Date.now(), repositories };
+const writeCachedPayload = (payload: unknown): void => {
+  const entry: CacheEntry = { savedAt: Date.now(), payload };
   try {
     sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
   } catch {
@@ -82,8 +82,9 @@ export const fetchRepositories = (): Promise<GitHubRepository[]> => {
       if (!response.ok) {
         throw new Error(`GitHub API answered ${response.status}`);
       }
-      const repositories = parseRepositories(await response.json());
-      writeCachedRepositories(repositories);
+      const payload: unknown = await response.json();
+      const repositories = parseRepositories(payload);
+      writeCachedPayload(payload);
       return repositories;
     })
     .finally(() => {
@@ -94,3 +95,4 @@ export const fetchRepositories = (): Promise<GitHubRepository[]> => {
 
 export const findRepository = ({ repositories, url }: { repositories: GitHubRepository[]; url: string }): GitHubRepository | undefined =>
   repositories.find((repository) => repository.url.toLowerCase() === url.toLowerCase());
+
