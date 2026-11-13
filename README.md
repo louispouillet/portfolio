@@ -33,6 +33,7 @@ The site runs on http://localhost:5173.
 | `npm run build` | Type checks and builds the site into `dist/` |
 | `npm run preview` | Serves the production build locally |
 | `npm run lint` | Runs ESLint |
+| `npm run cv` | Builds the site and prints the English and French CV to `public/cv/` (needs Google Chrome) |
 
 ## Structure
 
@@ -66,6 +67,7 @@ vercel.json          # SPA rewrite, security and cache headers
 * In descriptions, `**word**` is highlighted.
 * Theme colors and fonts are defined once in `src/index.css` (`@theme`).
 * The public site URL is defined once in `src/config/site.ts`.
+* The CV is the page `/en/cv` (or `/fr/cv`), built from the same data plus `src/data/cv.ts`. After changing the content, run `npm run cv` and commit the two PDFs in `public/cv/`. The command fails if a CV no longer fits on one page. Set `CHROME_PATH` if Chrome is not in `/Applications`.
 * Public GitHub repositories without a project card appear automatically under "Other repositories". Hide one by adding its name to `EXCLUDED_REPOSITORIES` in `src/config/github.ts`.
 
 ## Deployment
