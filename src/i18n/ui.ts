@@ -4,6 +4,8 @@ type UiText = {
   common: {
     present: string;
     languageSwitcherLabel: string;
+    closeTab: string;
+    toggleExplorer: string;
   };
   home: {
     typedLines: string[];
@@ -107,6 +109,8 @@ export const UI_TEXT: Localized<UiText> = {
     common: {
       present: "present",
       languageSwitcherLabel: "Language",
+      closeTab: "Close",
+      toggleExplorer: "Show or hide the file explorer",
     },
     home: {
       typedLines: [
@@ -215,6 +219,8 @@ export const UI_TEXT: Localized<UiText> = {
     common: {
       present: "aujourd'hui",
       languageSwitcherLabel: "Langue",
+      closeTab: "Fermer",
+      toggleExplorer: "Afficher ou masquer l'explorateur de fichiers",
     },
     home: {
       typedLines: [

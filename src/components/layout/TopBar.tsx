@@ -17,7 +17,7 @@ const TopBar = ({ language, activeTab }: TopBarProps) => {
         <span className="w-3 h-3 bg-green-500 rounded-full"></span>
       </div>
 
-      <div className="bg-[#2a2a40] text-gray-400 text-[0.8rem] px-15 my-0.5 rounded-sm border-hover border flex items-center">
+      <div aria-hidden="true" className="bg-[#2a2a40] text-gray-400 text-[0.8rem] px-15 my-0.5 rounded-sm border-hover border flex items-center">
         <CiSearch/>
         <span className="ml-2">Louis : portfolio</span>
         <span className=" ml-2 text-xs bg-[#3a3a5a] px-2 py-0.5 rounded">

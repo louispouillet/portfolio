@@ -17,17 +17,19 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
   return (
     <div className="relative inline-block" ref={ref}>
       <span
-        className="px-3 py-1 rounded hover:bg-hover transition duration-200 cursor-default font-mono text-[0.7vw] text-soft"
+        className="px-3 py-1 rounded hover:bg-hover transition duration-200 cursor-default font-mono text-xs text-soft"
         onClick={() => setOpen(!open)}
       >
         {title}
       </span>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 w-48 bg-bar text-soft rounded shadow-lg z-50 font-mono text-[0.7vw]">
+        <div className="absolute top-full left-0 mt-1 w-48 bg-bar text-soft rounded shadow-lg z-50 font-mono text-xs">
           {options.map((opt: string, i: number) => (
             <button
               key={i}
+              type="button"
+              tabIndex={-1}
               className="w-full text-left px-3 py-1 hover:bg-hover transition cursor-default"
               onClick={() => {
                 setOpen(false);
@@ -44,7 +46,7 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
 
 const MenuBar = () => {
   return (
-    <div className="flex gap-6 px-1 bg-bar w-full text-soft font-mono py-0.9 border-line border-t">
+    <div aria-hidden="true" className="flex gap-6 px-1 py-0.5 bg-bar w-full text-soft font-mono border-line border-t">
       <MenuButton
         title="File"
         options={["New File", "Open File...", "Save", "Exit"]}

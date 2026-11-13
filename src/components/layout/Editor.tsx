@@ -4,6 +4,7 @@ import { tabFolders, tabMeta } from "../../config/pageMeta";
 import { PAGE_COMPONENTS } from "../../config/pages";
 import { pagePath, tabKey, type EditorTab, type Language } from "../../config/routes";
 import { useDocumentMeta } from "../../hooks/useDocumentMeta";
+import { UI_TEXT } from "../../i18n/ui";
 import CaseStudy from "../pages/CaseStudy";
 import Breadcrumb from "../ui/Breadcrumb";
 import TabBar from "./TabBar";
@@ -69,7 +70,7 @@ const Editor = ({ language, activeTab }: EditorProps) => {
         </div>
         <div className='flex flex-col flex-1 h-full min-w-0'>
           <div className='hidden sm:block'>
-            <TabBar openTabs={openTabs} activeTab={activeTab} onSelectTab={handleSelectTab} onCloseTab={handleCloseTab} />
+            <TabBar openTabs={openTabs} activeTab={activeTab} closeLabel={UI_TEXT[language].common.closeTab} onSelectTab={handleSelectTab} onCloseTab={handleCloseTab} />
           </div>
           <Breadcrumb folders={tabFolders(activeTab)} fileName={tabMeta(activeTab).fileName} />
           <div className='block sm:hidden'>

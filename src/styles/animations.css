@@ -40,3 +40,16 @@
 .slide-up.delay-6 { animation-delay: 1.2s; }
 .slide-up.delay-7 { animation-delay: 1.4s; }
 .slide-up.delay-8 { animation-delay: 1.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .animate-colorChange {
+    animation: none;
+    color: #61DAFB;
+  }
+}

@@ -13,12 +13,12 @@ const LanguageSwitcher = ({ language, activeTab, className }: LanguageSwitcherPr
   <nav aria-label={UI_TEXT[language].common.languageSwitcherLabel} className={`flex items-center gap-1 font-mono text-xs ${className ?? ""}`}>
     {LANGUAGES.map((code, index) => (
       <Fragment key={code}>
-        {index > 0 && <span className="text-[#555]">|</span>}
+        {index > 0 && <span aria-hidden="true" className="text-muted">|</span>}
         <Link
           to={pagePath({ language: code, ...activeTab })}
           hrefLang={code}
           aria-current={code === language ? "true" : undefined}
-          className={code === language ? "text-white" : "text-gray-500 transition-colors hover:text-white"}
+          className={code === language ? "text-white" : "text-muted transition-colors hover:text-white"}
         >
           {code.toUpperCase()}
         </Link>
