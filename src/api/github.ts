@@ -96,3 +96,19 @@ export const fetchRepositories = (): Promise<GitHubRepository[]> => {
 export const findRepository = ({ repositories, url }: { repositories: GitHubRepository[]; url: string }): GitHubRepository | undefined =>
   repositories.find((repository) => repository.url.toLowerCase() === url.toLowerCase());
 
+export const selectOtherRepositories = ({
+  repositories,
+  excludedNames,
+  knownUrls,
+}: {
+  repositories: GitHubRepository[];
+  excludedNames: string[];
+  knownUrls: string[];
+}): GitHubRepository[] => {
+  const knownLowerCaseUrls = knownUrls.map((url) => url.toLowerCase());
+  return repositories
+    .filter((repository) => !repository.isFork && !repository.isArchived)
+    .filter((repository) => !excludedNames.includes(repository.name))
+    .filter((repository) => !knownLowerCaseUrls.includes(repository.url.toLowerCase()))
+    .sort((first, second) => second.pushedAt.localeCompare(first.pushedAt));
+};

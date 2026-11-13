@@ -3,6 +3,7 @@ import { FEATURED_PROJECTS, SECONDARY_PROJECTS, type Project } from "../../data/
 import { useGitHubRepositories } from "../../hooks/useGitHubRepositories";
 import { useLanguage } from "../../hooks/useLanguage";
 import { UI_TEXT } from "../../i18n/ui";
+import OtherRepositories from "../content/OtherRepositories";
 import ProjectCard from "../content/ProjectCard";
 import CodeComment from "../ui/CodeComment";
 import PageHeader from "../ui/PageHeader";
@@ -61,7 +62,7 @@ const Projects = () => {
           ))}
         </div>
       </section>
-      <section className="slide-up delay-6 m-4 mt-8 pb-10 lg:mx-8 2xl:max-w-[70vw]">
+      <section className="slide-up delay-6 m-4 mt-8 lg:mx-8 2xl:max-w-[70vw]">
         <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.otherTitle}</h2>
         <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
         <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -69,6 +70,11 @@ const Projects = () => {
             <ProjectCard key={project.id} project={project} language={language} variant="compact" repository={repositoryOf(project)} />
           ))}
         </div>
+      </section>
+      <section className="slide-up delay-7 m-4 mt-8 pb-10 lg:mx-8 2xl:max-w-[70vw]">
+        <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.repositoriesTitle}</h2>
+        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <OtherRepositories github={github} language={language} />
       </section>
     </PageLayout>
   );

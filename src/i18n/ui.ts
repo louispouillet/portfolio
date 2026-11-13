@@ -40,6 +40,11 @@ type UiText = {
     demoClose: string;
     updatedLabel: string;
     starsLabel: string;
+    repositoriesTitle: string;
+    repositoriesLoading: string;
+    repositoriesError: string;
+    repositoriesProfileLink: string;
+    noDescription: string;
   };
   services: {
     comment: string;
@@ -145,6 +150,11 @@ export const UI_TEXT: Localized<UiText> = {
       demoClose: "Close",
       updatedLabel: "updated",
       starsLabel: "GitHub stars",
+      repositoriesTitle: "OTHER REPOSITORIES",
+      repositoriesLoading: "// fetching repositories from GitHub...",
+      repositoriesError: "// GitHub cannot be reached right now.",
+      repositoriesProfileLink: "See all my repositories on GitHub",
+      noDescription: "No description",
     },
     services: {
       comment: "// What I can build for you",
@@ -248,6 +258,11 @@ export const UI_TEXT: Localized<UiText> = {
       demoClose: "Fermer",
       updatedLabel: "mis à jour",
       starsLabel: "étoiles GitHub",
+      repositoriesTitle: "AUTRES REPOS",
+      repositoriesLoading: "// récupération des repos depuis GitHub...",
+      repositoriesError: "// GitHub est injoignable pour le moment.",
+      repositoriesProfileLink: "Voir tous mes repos sur GitHub",
+      noDescription: "Pas de description",
     },
     services: {
       comment: "// Ce que je peux réaliser pour vous",
