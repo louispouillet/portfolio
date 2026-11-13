@@ -4,12 +4,14 @@ type UiText = {
   common: {
     present: string;
     languageSwitcherLabel: string;
+    closeTab: string;
+    toggleExplorer: string;
   };
   home: {
     typedLines: string[];
     badges: { student: string; passion: string; city: string };
     intro: string;
-    actions: { contact: string; projects: string; about: string };
+    actions: { contact: string; services: string; projects: string; about: string };
     stats: {
       yearNumber: string;
       yearSuffix: string;
@@ -33,6 +35,37 @@ type UiText = {
     quote: string;
     snippetComment: string;
     snippetBody: string;
+    featuredTitle: string;
+    otherTitle: string;
+    caseStudyLink: string;
+    demoButton: string;
+    demoClose: string;
+    updatedLabel: string;
+    starsLabel: string;
+    repositoriesTitle: string;
+    repositoriesLoading: string;
+    repositoriesError: string;
+    repositoriesProfileLink: string;
+    noDescription: string;
+  };
+  services: {
+    comment: string;
+    title: string;
+    intro: string;
+    proofTitle: string;
+    ctaTitle: string;
+    ctaText: string;
+    ctaButton: string;
+  };
+  caseStudy: {
+    back: string;
+    contextTitle: string;
+    workTitle: string;
+    architectureTitle: string;
+    choicesTitle: string;
+    outcomeTitle: string;
+    stackTitle: string;
+    repositoryLink: string;
   };
   skills: {
     comment: string;
@@ -76,6 +109,8 @@ export const UI_TEXT: Localized<UiText> = {
     common: {
       present: "present",
       languageSwitcherLabel: "Language",
+      closeTab: "Close",
+      toggleExplorer: "Show or hide the file explorer",
     },
     home: {
       typedLines: [
@@ -85,13 +120,13 @@ export const UI_TEXT: Localized<UiText> = {
         "// currently studying at epitech",
         "// feel free to explore and contact me !",
       ],
-      badges: { student: "IT student", passion: "software passionate", city: "toulouse" },
+      badges: { student: "freelance developer", passion: "software passionate", city: "toulouse" },
       intro:
-        "Currently studying at **Epitech Toulouse**, I am learning **data analysis** and **web development**. I’m passionate about discovering new technologies and constantly expanding my skills.",
-      actions: { contact: "Contact", projects: "Projects", about: "About Me" },
+        "Second year student at **Epitech Toulouse** and **freelance developer**. After a three month internship building **AWS serverless** applications at Sigterm, I build backends, web apps and automations for businesses.",
+      actions: { contact: "Contact", services: "Services", projects: "Projects", about: "About Me" },
       stats: {
-        yearNumber: "1",
-        yearSuffix: "st",
+        yearNumber: "2",
+        yearSuffix: "nd",
         yearLabel: "year",
         peerValue: "Peer",
         peerLabel: "learning",
@@ -112,6 +147,37 @@ export const UI_TEXT: Localized<UiText> = {
       quote: "// You don’t learn to walk by following rules. You learn by doing, and by falling over. (Richard Branson)",
       snippetComment: "// Fetch and display my projects",
       snippetBody: "// You will find all my projects below",
+      featuredTitle: "FEATURED",
+      otherTitle: "OTHER PROJECTS",
+      caseStudyLink: "Case study",
+      demoButton: "Demo",
+      demoClose: "Close",
+      updatedLabel: "updated",
+      starsLabel: "GitHub stars",
+      repositoriesTitle: "OTHER REPOSITORIES",
+      repositoriesLoading: "// fetching repositories from GitHub...",
+      repositoriesError: "// GitHub cannot be reached right now.",
+      repositoriesProfileLink: "See all my repositories on GitHub",
+      noDescription: "No description",
+    },
+    services: {
+      comment: "// What I can build for you",
+      title: "Services",
+      intro: "I work as a **freelance developer** for startups and small businesses. Each offer below is backed by projects I have already delivered.",
+      proofTitle: "Already done in",
+      ctaTitle: "Have a project in mind?",
+      ctaText: "Tell me what you need, even roughly. We will see together what to build and how.",
+      ctaButton: "Discuss your project",
+    },
+    caseStudy: {
+      back: "All projects",
+      contextTitle: "Context",
+      workTitle: "What I built",
+      architectureTitle: "Architecture",
+      choicesTitle: "Technical choices",
+      outcomeTitle: "Outcome",
+      stackTitle: "Stack",
+      repositoryLink: "View the code on GitHub",
     },
     skills: {
       comment: "// I am constantly improving my skills ;",
@@ -127,8 +193,8 @@ export const UI_TEXT: Localized<UiText> = {
     contact: {
       comment: "// Contact me if you have any questions or would like to collaborate!",
       title: "Contact",
-      role: "IT Student · Epitech",
-      availability: "Open to opportunities",
+      role: "Freelance developer · Epitech student",
+      availability: "Available for freelance projects",
       findMe: "FIND ME",
       facts: { location: "Location", school: "School", languages: "Languages", year: "Year" },
       form: {
@@ -153,6 +219,8 @@ export const UI_TEXT: Localized<UiText> = {
     common: {
       present: "aujourd'hui",
       languageSwitcherLabel: "Langue",
+      closeTab: "Fermer",
+      toggleExplorer: "Afficher ou masquer l'explorateur de fichiers",
     },
     home: {
       typedLines: [
@@ -162,13 +230,13 @@ export const UI_TEXT: Localized<UiText> = {
         "// actuellement étudiant à epitech",
         "// n'hésitez pas à explorer et à me contacter !",
       ],
-      badges: { student: "étudiant en informatique", passion: "passionné de logiciel", city: "toulouse" },
+      badges: { student: "développeur freelance", passion: "passionné de logiciel", city: "toulouse" },
       intro:
-        "Actuellement étudiant à **Epitech Toulouse**, j'apprends l'**analyse de données** et le **développement web**. Je suis passionné par la découverte de nouvelles technologies et j'enrichis sans cesse mes compétences.",
-      actions: { contact: "Contact", projects: "Projets", about: "À propos" },
+        "Étudiant en 2e année à **Epitech Toulouse** et **développeur freelance**. Après un stage de trois mois à construire des applications **AWS serverless** chez Sigterm, je développe des backends, des applications web et des automatisations pour les entreprises.",
+      actions: { contact: "Contact", services: "Services", projects: "Projets", about: "À propos" },
       stats: {
-        yearNumber: "1",
-        yearSuffix: "re",
+        yearNumber: "2",
+        yearSuffix: "e",
         yearLabel: "année",
         peerValue: "Peer",
         peerLabel: "learning",
@@ -189,6 +257,37 @@ export const UI_TEXT: Localized<UiText> = {
       quote: "// On n'apprend pas à marcher en suivant des règles. On apprend en essayant, et en tombant. (Richard Branson)",
       snippetComment: "// Récupère et affiche mes projets",
       snippetBody: "// Vous trouverez tous mes projets ci-dessous",
+      featuredTitle: "À LA UNE",
+      otherTitle: "AUTRES PROJETS",
+      caseStudyLink: "Étude de cas",
+      demoButton: "Démo",
+      demoClose: "Fermer",
+      updatedLabel: "mis à jour",
+      starsLabel: "étoiles GitHub",
+      repositoriesTitle: "AUTRES REPOS",
+      repositoriesLoading: "// récupération des repos depuis GitHub...",
+      repositoriesError: "// GitHub est injoignable pour le moment.",
+      repositoriesProfileLink: "Voir tous mes repos sur GitHub",
+      noDescription: "Pas de description",
+    },
+    services: {
+      comment: "// Ce que je peux réaliser pour vous",
+      title: "Services",
+      intro: "Je travaille comme **développeur freelance** pour des startups et des petites entreprises. Chaque offre ci-dessous s'appuie sur des projets déjà réalisés.",
+      proofTitle: "Déjà réalisé dans",
+      ctaTitle: "Un projet en tête ?",
+      ctaText: "Décrivez-moi votre besoin, même dans les grandes lignes. Nous verrons ensemble quoi construire et comment.",
+      ctaButton: "Parlons de votre projet",
+    },
+    caseStudy: {
+      back: "Tous les projets",
+      contextTitle: "Contexte",
+      workTitle: "Ce que j'ai réalisé",
+      architectureTitle: "Architecture",
+      choicesTitle: "Choix techniques",
+      outcomeTitle: "Résultat",
+      stackTitle: "Stack",
+      repositoryLink: "Voir le code sur GitHub",
     },
     skills: {
       comment: "// J'améliore sans cesse mes compétences ;",
@@ -204,8 +303,8 @@ export const UI_TEXT: Localized<UiText> = {
     contact: {
       comment: "// Contactez-moi pour toute question ou pour collaborer !",
       title: "Contact",
-      role: "Étudiant en informatique · Epitech",
-      availability: "Ouvert aux opportunités",
+      role: "Développeur freelance · Étudiant à Epitech",
+      availability: "Disponible pour des missions freelance",
       findMe: "ME TROUVER",
       facts: { location: "Localisation", school: "École", languages: "Langues", year: "Année" },
       form: {

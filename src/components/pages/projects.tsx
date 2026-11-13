@@ -1,6 +1,9 @@
-import { PROJECTS } from "../../data/projects";
+import { findRepository, type GitHubRepository } from "../../api/github";
+import { FEATURED_PROJECTS, SECONDARY_PROJECTS, type Project } from "../../data/projects";
+import { useGitHubRepositories } from "../../hooks/useGitHubRepositories";
 import { useLanguage } from "../../hooks/useLanguage";
 import { UI_TEXT } from "../../i18n/ui";
+import OtherRepositories from "../content/OtherRepositories";
 import ProjectCard from "../content/ProjectCard";
 import CodeComment from "../ui/CodeComment";
 import PageHeader from "../ui/PageHeader";
@@ -9,6 +12,11 @@ import PageLayout from "../ui/PageLayout";
 const Projects = () => {
   const language = useLanguage();
   const text = UI_TEXT[language].projects;
+  const github = useGitHubRepositories();
+  const repositoryOf = (project: Project): GitHubRepository | undefined =>
+    github.status === "success" && project.repositoryUrl !== undefined
+      ? findRepository({ repositories: github.repositories, url: project.repositoryUrl })
+      : undefined;
 
   return (
     <PageLayout>
@@ -45,11 +53,29 @@ const Projects = () => {
           </span>
         </div>
       </div>
-      <div className="mt-5 lg:mt-8 grid grid-cols-1 lg:grid-cols-2 lg:ml-8 slide-up delay-5 m-4 gap-3 2xl:max-w-[60vw]">
-        {PROJECTS.map((project, index) => (
-          <ProjectCard key={project.id} project={project} language={language} className={index % 2 === 1 ? "lg:-ml-10" : ""} />
-        ))}
-      </div>
+      <section className="slide-up delay-5 m-4 mt-8 lg:mx-8 2xl:max-w-[70vw]">
+        <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.featuredTitle}</h2>
+        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {FEATURED_PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} language={language} variant="featured" repository={repositoryOf(project)} />
+          ))}
+        </div>
+      </section>
+      <section className="slide-up delay-6 m-4 mt-8 lg:mx-8 2xl:max-w-[70vw]">
+        <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.otherTitle}</h2>
+        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {SECONDARY_PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} language={language} variant="compact" repository={repositoryOf(project)} />
+          ))}
+        </div>
+      </section>
+      <section className="slide-up delay-7 m-4 mt-8 pb-10 lg:mx-8 2xl:max-w-[70vw]">
+        <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.repositoriesTitle}</h2>
+        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <OtherRepositories github={github} language={language} />
+      </section>
     </PageLayout>
   );
 };

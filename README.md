@@ -4,7 +4,7 @@ Personal portfolio of Louis Pouillet, developer building AWS serverless backends
 
 The site is styled as a code editor: each page is a file opened in a tab (`home.tsx`, `about.html`, `projects.js`, `skills.json`, `experience.ts`, `contact.css`), with a file explorer on desktop and a menu on mobile.
 
-It is available in English and French. The language is part of the URL (`/en/projects`, `/fr/projects`), and `/` redirects to the browser language.
+It is available in English and French. The language is part of the URL (`/en/projects`, `/fr/projects`), and `/` opens the English version, whatever the browser language.
 
 ## Stack
 
@@ -37,26 +37,45 @@ The site runs on http://localhost:5173.
 ## Structure
 
 ```text
+public/              # favicon, touch icon and share image
 src/
-├── assets/          # images and the resume PDF
+├── api/             # GitHub API client with a session cache
+├── assets/          # images, demo video and the resume PDF
 ├── components/
-│   ├── content/     # cards and items rendered from data (projects, experiences, skills)
+│   ├── content/     # cards and items rendered from data (projects, experiences, skills, services)
 │   ├── layout/      # editor chrome: title bar, menu, file explorer, tabs, mobile bar
-│   ├── pages/       # one component per page
+│   ├── pages/       # one component per page, plus the case study page
 │   └── ui/          # shared building blocks (page layout, header, card, tag)
-├── config/          # languages, routes and the page registry
+├── config/          # site URL, languages, routes, page registry and GitHub settings
 ├── data/            # site content, typed and bilingual
-├── hooks/           # useLanguage
-├── i18n/            # localized types, interface texts and formatting
+├── hooks/           # language, document metadata, GitHub data, reduced motion
+├── i18n/            # localized types, interface and SEO texts, formatting
 ├── styles/          # animations
-├── App.tsx          # validates the language and page from the URL
+├── App.tsx          # validates the language, page and case study from the URL
 └── main.tsx         # entry point and routes
+vite/                # build plugin: site URL in index.html, sitemap.xml and robots.txt
+vercel.json          # SPA rewrite, security and cache headers
 ```
 
 ## Editing the content
 
-* Projects, experiences, education, skills and contact links live in `src/data/`. Adding an entry is enough to show it on the site.
-* Interface texts live in `src/i18n/ui.ts`.
+* Projects, case studies, experiences, education, skills, services and contact links live in `src/data/`. Adding an entry is enough to show it on the site.
+* A new case study also needs its slug in `CASE_STUDY_SLUGS` (`src/config/routes.ts`), so that it is routed and listed in the sitemap.
+* Interface texts live in `src/i18n/ui.ts`, page titles and descriptions for search engines in `src/i18n/seo.ts`.
 * Every text is written as `{ en: "...", fr: "..." }`. A missing language fails the type check.
 * In descriptions, `**word**` is highlighted.
 * Theme colors and fonts are defined once in `src/index.css` (`@theme`).
+* The public site URL is defined once in `src/config/site.ts`.
+* Public GitHub repositories without a project card appear automatically under "Other repositories". Hide one by adding its name to `EXCLUDED_REPOSITORIES` in `src/config/github.ts`.
+
+## Deployment
+
+The site is deployed on [Vercel](https://vercel.com) from the `main` branch. `vercel.json` sets the build, the rewrite that serves `index.html` for every route (so `/fr/projects` works on reload) and the security headers.
+
+To attach the custom domain `louis-pouillet.yopay.fr`:
+
+1. In the Vercel project, open **Settings** then **Domains** and add `louis-pouillet.yopay.fr`.
+2. Vercel shows the DNS record to create, a `CNAME` for `louis-pouillet`. Add it in the `yopay.fr` hosted zone in Route 53.
+3. Wait for Vercel to validate the domain and issue the HTTPS certificate.
+4. In EmailJS, restrict the allowed origins to `https://louis-pouillet.yopay.fr`, so the contact form only works from the site.
+5. In Google Search Console, add the domain and submit `https://louis-pouillet.yopay.fr/sitemap.xml`.

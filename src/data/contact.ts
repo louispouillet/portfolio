@@ -16,7 +16,7 @@ export const PROFILE_FACTS: ProfileFacts = {
   location: { en: "Toulouse, France", fr: "Toulouse, France" },
   school: "Epitech Toulouse",
   languages: "FR / EN",
-  year: "B1 · 2025/2026",
+  year: "B2 · 2026/2027",
 };
 
 export type ContactLink = {

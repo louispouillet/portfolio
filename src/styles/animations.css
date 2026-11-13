@@ -41,11 +41,15 @@
 .slide-up.delay-7 { animation-delay: 1.4s; }
 .slide-up.delay-8 { animation-delay: 1.6s; }
 
-@keyframes fillSkillBar {
-  to { width: var(--skill-level); }
-}
+@media (prefers-reduced-motion: reduce) {
+  .slide-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 
-.skill-bar-fill {
-  width: 0;
-  animation: fillSkillBar 2s ease-in-out forwards;
+  .animate-colorChange {
+    animation: none;
+    color: #61DAFB;
+  }
 }

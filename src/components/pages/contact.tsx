@@ -50,7 +50,7 @@ function recordSubmission() {
 type FormState = "idle" | "sending" | "success" | "error" | "rate_limited";
 
 const inputClass =
-  "w-full bg-[#2A2A2A] border border-[#444] rounded text-white font-mono text-sm px-3 py-2 outline-none focus:border-accent-teal transition-colors placeholder:text-[#555]";
+  "w-full bg-[#2A2A2A] border border-[#444] rounded text-white font-mono text-sm px-3 py-2 outline-none focus:border-accent-teal transition-colors placeholder:text-[#8A8A8A]";
 
 const labelClass = "font-mono text-muted text-xs tracking-widest";
 
@@ -98,7 +98,7 @@ const Contact = () => {
           <div className="flex flex-col justify-between p-5 flex-1">
             <div className="flex flex-col gap-1">
               <span className="font-mono text-white font-bold text-xl tracking-tight">{FULL_NAME}</span>
-              <span className="font-mono text-[#666] text-sm">{text.role}</span>
+              <span className="font-mono text-muted text-sm">{text.role}</span>
               <span className="font-mono text-accent-teal text-xs mt-2 flex items-center gap-1.5">
                 <VscCircleFilled className="text-[8px] animate-pulse" />
                 {text.availability}
@@ -108,7 +108,7 @@ const Contact = () => {
             <div className="flex flex-col gap-3 font-mono">
               {facts.map((fact) => (
                 <div key={fact.label}>
-                  <span className="text-[#4a4a4a] text-[10px] tracking-widest uppercase block">{fact.label}</span>
+                  <span className="text-muted text-[10px] tracking-widest uppercase block">{fact.label}</span>
                   <span className="text-soft text-sm mt-0.5 block">{fact.value}</span>
                 </div>
               ))}

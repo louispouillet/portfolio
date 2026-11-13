@@ -4,9 +4,11 @@ import { FaCodepen } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import { TiHeartHalfOutline } from "react-icons/ti";
+import { SiYaml } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { pagePath } from "../../config/routes";
 import { useLanguage } from "../../hooks/useLanguage";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { UI_TEXT } from "../../i18n/ui";
 import RichText from "../content/RichText";
 import PageLayout from "../ui/PageLayout";
@@ -14,15 +16,18 @@ import PageLayout from "../ui/PageLayout";
 const Home = () => {
   const language = useLanguage();
   const text = UI_TEXT[language].home;
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
     <PageLayout>
       <div className="flex flex-col font-mono">
         <span className="animate-colorChange mb-4 mt-6 px-4 text-sm sm:mt-8 sm:mb-5 sm:px-8 sm:text-base lg:mt-10 lg:px-16">
-          <ReactTyped key={language} strings={text.typedLines} typeSpeed={80} backSpeed={40} loop />
+          {prefersReducedMotion ? text.typedLines[0] : <ReactTyped key={language} strings={text.typedLines} typeSpeed={80} backSpeed={40} loop />}
         </span>
-        <span className="font-display slide-up delay-2 px-4 text-4xl font-extrabold tracking-[-1.2px] text-white sm:px-8 sm:text-6xl sm:tracking-[-2px] lg:px-16 lg:text-8xl lg:tracking-[-2.5px]">Louis</span>
-        <span className="font-display slide-up delay-3 px-4 text-4xl font-extrabold tracking-[-1.2px] text-accent-pink sm:px-8 sm:text-6xl sm:tracking-[-2px] lg:px-16 lg:text-8xl lg:tracking-[-2.5px]">POUILLET</span>
+        <h1 className="flex flex-col">
+          <span className="block font-display slide-up delay-2 px-4 text-4xl font-extrabold tracking-[-1.2px] text-white sm:px-8 sm:text-6xl sm:tracking-[-2px] lg:px-16 lg:text-8xl lg:tracking-[-2.5px]">Louis</span>
+          <span className="block font-display slide-up delay-3 px-4 text-4xl font-extrabold tracking-[-1.2px] text-accent-pink sm:px-8 sm:text-6xl sm:tracking-[-2px] lg:px-16 lg:text-8xl lg:tracking-[-2.5px]">POUILLET</span>
+        </h1>
         <span className="slide-up delay-4 mt-2 ml-4 inline-block h-0.75 w-[calc(100%-2rem)] max-w-152 bg-linear-to-r from-accent-pink to-editor sm:ml-8 sm:w-md lg:ml-16 lg:w-152"></span>
         <div className="slide-up delay-5 mt-4 flex flex-wrap items-center gap-3 px-4 sm:px-8 lg:px-16">
           <div className="flex h-auto items-center gap-2 border border-crumb bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
@@ -39,7 +44,7 @@ const Home = () => {
           </div>
           <div className="flex h-auto items-center gap-1 border border-accent-pink bg-bar px-2 py-1 text-xs text-soft sm:text-sm">
             <span className="text-accent-pink">@</span>
-            <img src={epitechLogo} alt="Epitech" className="h-4 w-20" />
+            <img src={epitechLogo} alt="Epitech" className="h-4 w-auto" />
           </div>
         </div>
         <span className="slide-up delay-6 mt-8 px-4 text-sm leading-relaxed text-muted sm:px-8 sm:text-base lg:max-w-3xl lg:px-16">
@@ -47,6 +52,7 @@ const Home = () => {
         </span>
         <div className="slide-up delay-7 mt-8 flex flex-wrap gap-3 px-4 sm:px-8 lg:gap-6 lg:px-16">
           <Link to={pagePath({ language, page: "contact" })} className="flex items-center gap-2 rounded bg-[#034672] p-2 text-sm italic text-white transition-colors hover:bg-[#3295d6]"><FaEnvelope />{text.actions.contact}</Link>
+          <Link to={pagePath({ language, page: "services" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><SiYaml />{text.actions.services}</Link>
           <Link to={pagePath({ language, page: "projects" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaCodepen />{text.actions.projects}</Link>
           <Link to={pagePath({ language, page: "about" })} className="flex items-center gap-2 rounded border border-[#E5E7EB] p-2 text-sm italic text-white transition-colors hover:bg-bar"><FaUserAstronaut />{text.actions.about}</Link>
         </div>

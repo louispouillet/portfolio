@@ -8,14 +8,15 @@ import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import './index.css'
 import App from './App.tsx'
-import { detectBrowserLanguage } from './config/routes'
+import { DEFAULT_LANGUAGE } from './config/routes'
 
 createRoot(document.getElementById('body')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to={`/${detectBrowserLanguage()}`} replace />} />
+        <Route path="/" element={<Navigate to={`/${DEFAULT_LANGUAGE}`} replace />} />
         <Route path="/:language/:page?" element={<App />} />
+        <Route path="/:language/:page/:slug" element={<App />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
