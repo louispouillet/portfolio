@@ -10,9 +10,9 @@ import RepositoryStats from "./RepositoryStats";
 import RichText from "./RichText";
 import Tag from "../ui/Tag";
 
-const ACCENT_CLASSES: Record<ProjectAccent, { line: string; text: string; highlight: string }> = {
-  pink: { line: "bg-accent-pink", text: "text-accent-pink", highlight: "text-accent-teal" },
-  teal: { line: "bg-accent-teal", text: "text-accent-teal", highlight: "text-accent-pink" },
+const ACCENT_CLASSES: Record<ProjectAccent, { hover: string; text: string; highlight: string }> = {
+  pink: { hover: "hover:border-accent-pink/60", text: "text-accent-pink", highlight: "text-accent-teal" },
+  teal: { hover: "hover:border-accent-teal/60", text: "text-accent-teal", highlight: "text-accent-pink" },
 };
 
 export type ProjectCardVariant = "featured" | "compact";
@@ -22,7 +22,7 @@ const VARIANT_CLASSES: Record<ProjectCardVariant, { card: string; icon: string; 
     card: "p-4",
     icon: "text-4xl",
     title: "text-xl lg:text-2xl",
-    description: "text-[0.875rem] border p-2 rounded",
+    description: "text-[0.875rem] border border-line p-2 rounded-md",
   },
   compact: {
     card: "p-3",
@@ -46,11 +46,7 @@ const ProjectCard = ({ project, language, variant, repository }: ProjectCardProp
   const linkClasses = `${accentClasses.text} border rounded-sm px-2 py-1 flex items-center gap-1 hover:bg-bar font-mono text-xs`;
 
   return (
-    <article className={`relative group flex flex-col rounded border border-line overflow-hidden bg-panel ${variantClasses.card}`}>
-      <span className={`absolute top-0 left-0 h-0.5 w-0 ${accentClasses.line} group-hover:w-full transition-all duration-800`}></span>
-      <span className={`absolute top-0 right-0 w-0.5 h-0 ${accentClasses.line} group-hover:h-full transition-all duration-800 delay-100`}></span>
-      <span className={`absolute bottom-0 right-0 h-0.5 w-0 ${accentClasses.line} group-hover:w-full transition-all duration-800 delay-180`}></span>
-      <span className={`absolute bottom-0 left-0 w-0.5 h-0 ${accentClasses.line} group-hover:h-full transition-all duration-800 delay-230`}></span>
+    <article className={`relative flex flex-col rounded-lg border border-line overflow-hidden bg-panel transition-[border-color,box-shadow] duration-300 hover:shadow-[0_6px_20px_rgb(0_0_0/0.35)] ${accentClasses.hover} ${variantClasses.card}`}>
 
       <Icon className={`text-white ${variantClasses.icon}`} />
 

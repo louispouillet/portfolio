@@ -12,7 +12,7 @@ const EducationItem = ({ education, language }: EducationItemProps) => {
   const formattedPeriod = formatPeriod({ period, language });
 
   return (
-    <div className="border-muted border p-3 rounded flex flex-col transition-colors hover:bg-bar hover:border-accent-teal hover:border-2">
+    <div className="border-line-strong border p-3 rounded-md flex flex-col transition-colors hover:bg-bar hover:border-accent-teal">
       <div className="flex flex-row justify-between items-center">
         <span className="text-white font-bold tracking-normal">{degree[language]}</span>
         <span className="text-soft hidden lg:block">{formattedPeriod}</span>

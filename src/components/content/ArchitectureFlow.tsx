@@ -16,7 +16,7 @@ const ArchitectureFlow = ({ steps, language }: ArchitectureFlowProps) => (
             <span className="hidden lg:inline">→</span>
           </span>
         )}
-        <div className="rounded border border-line bg-panel px-3 py-2 lg:w-40">
+        <div className="rounded-md border border-line bg-panel px-3 py-2 lg:w-40">
           <p className="font-mono text-sm text-white">{step.name}</p>
           <p className="mt-1 font-mono text-xs text-muted">{step.detail[language]}</p>
         </div>

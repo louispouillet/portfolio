@@ -55,7 +55,7 @@ const Projects = () => {
       </div>
       <section className="slide-up delay-5 m-4 mt-8 lg:mx-8 2xl:max-w-[70vw]">
         <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.featuredTitle}</h2>
-        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <span className="mt-3 mb-5 block h-px w-full bg-line-strong"></span>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {FEATURED_PROJECTS.map((project) => (
             <ProjectCard key={project.id} project={project} language={language} variant="featured" repository={repositoryOf(project)} />
@@ -64,7 +64,7 @@ const Projects = () => {
       </section>
       <section className="slide-up delay-6 m-4 mt-8 lg:mx-8 2xl:max-w-[70vw]">
         <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.otherTitle}</h2>
-        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <span className="mt-3 mb-5 block h-px w-full bg-line-strong"></span>
         <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {SECONDARY_PROJECTS.map((project) => (
             <ProjectCard key={project.id} project={project} language={language} variant="compact" repository={repositoryOf(project)} />
@@ -73,7 +73,7 @@ const Projects = () => {
       </section>
       <section className="slide-up delay-7 m-4 mt-8 pb-10 lg:mx-8 2xl:max-w-[70vw]">
         <h2 className="font-mono text-sm text-[#DCDCAA] sm:text-base lg:text-[1.3rem]">{text.repositoriesTitle}</h2>
-        <span className="mt-3 mb-5 block h-px w-full bg-crumb"></span>
+        <span className="mt-3 mb-5 block h-px w-full bg-line-strong"></span>
         <OtherRepositories github={github} language={language} />
       </section>
     </PageLayout>
