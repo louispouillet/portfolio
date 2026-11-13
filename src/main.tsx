@@ -8,6 +8,7 @@ import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import './index.css'
 import App from './App.tsx'
+import CvRoute from './cv/CvRoute'
 import { DEFAULT_LANGUAGE } from './config/routes'
 
 createRoot(document.getElementById('body')!).render(
@@ -15,6 +16,7 @@ createRoot(document.getElementById('body')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to={`/${DEFAULT_LANGUAGE}`} replace />} />
+        <Route path="/:language/cv" element={<CvRoute />} />
         <Route path="/:language/:page?" element={<App />} />
         <Route path="/:language/:page/:slug" element={<App />} />
         <Route path="*" element={<Navigate to="/" replace />} />

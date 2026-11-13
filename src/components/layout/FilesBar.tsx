@@ -1,6 +1,6 @@
 import { FaFilePdf } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import cvPdf from "../../assets/documents/Louis_Pouillet_cv.pdf";
+import { cvFileName, cvPath } from "../../config/site";
 import { PAGE_LIST } from "../../config/pageMeta";
 import { pagePath, type Language, type PageKey } from "../../config/routes";
 
@@ -26,7 +26,7 @@ const FilesBar = ({ language, activePage, onNavigate }: FilesBarProps) => {
             <span className="pl-[25%] text-[0.7rem] font-mono">{fileName}</span>
           </Link>
         ))}
-        <a href={cvPdf} download="Louis_Pouillet_cv.pdf" className="hover:bg-[#343435] transition cursor-pointer w-full block p-0 border-0">
+        <a href={cvPath({ language })} download={cvFileName({ language })} className="hover:bg-[#343435] transition cursor-pointer w-full block p-0 border-0">
             <FaFilePdf className="text-[#f10707] inline-block ml-2" />
             <span className="text-soft pl-[25%] text-[0.7rem] font-mono">resume.pdf</span>
         </a>

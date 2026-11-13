@@ -18,8 +18,11 @@ const formatPeriodPoint = ({ point, language }: { point: PeriodPoint; language: 
 
 export const formatPeriod = ({ period, language }: { period: Period; language: Language }): string => {
   const start = formatPeriodPoint({ point: period.start, language });
-  const end = period.end === undefined ? UI_TEXT[language].common.present : formatPeriodPoint({ point: period.end, language });
-  return `${start} → ${end}`;
+  if (period.end === undefined) {
+    return `${start} → ${UI_TEXT[language].common.present}`;
+  }
+  const end = formatPeriodPoint({ point: period.end, language });
+  return start === end ? start : `${start} → ${end}`;
 };
 
 const MILLISECONDS_PER_SECOND = 1000;
