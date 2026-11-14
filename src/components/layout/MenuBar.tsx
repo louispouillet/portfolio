@@ -1,8 +1,22 @@
 import { useState, useRef, useEffect } from "react";
 
-const MenuButton = ({ title, options }: { title: string; options: string[] }) => {
+type MenuItem = {
+  label: string;
+  shortcut?: string;
+  onSelect?: () => void;
+};
+
+type MenuButtonProps = {
+  title: string;
+  items: MenuItem[];
+};
+
+const toItems = (labels: string[]): MenuItem[] => labels.map((label) => ({ label }));
+
+const MenuButton = ({ title, items }: MenuButtonProps) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const isInteractive = items.some((item) => item.onSelect !== undefined);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -15,27 +29,43 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
   }, []);
 
   return (
-    <div className="relative inline-block" ref={ref}>
-      <span
+    <div
+      className="relative inline-block"
+      ref={ref}
+      aria-hidden={isInteractive ? undefined : true}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          setOpen(false);
+        }
+      }}
+    >
+      <button
+        type="button"
+        tabIndex={isInteractive ? undefined : -1}
+        aria-haspopup={isInteractive ? "menu" : undefined}
+        aria-expanded={isInteractive ? open : undefined}
         className="px-3 py-1 rounded hover:bg-hover transition duration-200 cursor-default font-mono text-xs text-soft"
         onClick={() => setOpen(!open)}
       >
         {title}
-      </span>
+      </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 w-48 bg-bar text-soft rounded shadow-lg z-50 font-mono text-xs">
-          {options.map((opt: string, i: number) => (
+        <div role={isInteractive ? "menu" : undefined} className="absolute top-full left-0 mt-1 w-56 py-1 bg-bar text-soft rounded-md border border-line-strong shadow-lg z-50 font-mono text-xs">
+          {items.map((item) => (
             <button
-              key={i}
+              key={item.label}
               type="button"
-              tabIndex={-1}
-              className="w-full text-left px-3 py-1 hover:bg-hover transition cursor-default"
+              role={isInteractive ? "menuitem" : undefined}
+              tabIndex={isInteractive ? undefined : -1}
+              className="flex w-full items-center justify-between gap-4 text-left px-3 py-1.5 hover:bg-hover transition cursor-default"
               onClick={() => {
                 setOpen(false);
+                item.onSelect?.();
               }}
             >
-              {opt}
+              <span>{item.label}</span>
+              {item.shortcut && <kbd className="font-mono text-[10px] text-muted">{item.shortcut}</kbd>}
             </button>
           ))}
         </div>
@@ -44,34 +74,33 @@ const MenuButton = ({ title, options }: { title: string; options: string[] }) =>
   );
 };
 
-const MenuBar = () => {
+type MenuBarProps = {
+  onNewTerminal: () => void;
+  onToggleTerminal: () => void;
+  onRunTask: (command: string) => void;
+  onKillTerminal: () => void;
+};
+
+const TASK_COMMAND = "neofetch";
+
+const MenuBar = ({ onNewTerminal, onToggleTerminal, onRunTask, onKillTerminal }: MenuBarProps) => {
   return (
-    <div aria-hidden="true" className="flex gap-6 px-1 py-0.5 bg-bar w-full text-soft font-mono border-b border-line">
-      <MenuButton
-        title="File"
-        options={["New File", "Open File...", "Save", "Exit"]}
-      />
-      <MenuButton
-        title="Edit"
-        options={["Undo", "Redo", "Cut", "Copy", "Paste"]}
-      />
-      <MenuButton
-        title="View"
-        options={["Appearance", "Layout", "Explorer", "Terminal"]}
-      />
+    <nav aria-label="Menu" className="flex gap-6 px-1 py-0.5 bg-bar w-full text-soft font-mono border-b border-line">
+      <MenuButton title="File" items={toItems(["New File", "Open File...", "Save", "Exit"])} />
+      <MenuButton title="Edit" items={toItems(["Undo", "Redo", "Cut", "Copy", "Paste"])} />
+      <MenuButton title="View" items={toItems(["Appearance", "Layout", "Explorer"])} />
       <MenuButton
         title="Terminal"
-        options={["New Terminal", "Run Task", "Kill Terminal"]}
+        items={[
+          { label: "New Terminal", onSelect: onNewTerminal },
+          { label: "Toggle Terminal", shortcut: "⌃`", onSelect: onToggleTerminal },
+          { label: `Run Task: ${TASK_COMMAND}`, onSelect: () => onRunTask(TASK_COMMAND) },
+          { label: "Kill Terminal", onSelect: onKillTerminal },
+        ]}
       />
-      <MenuButton
-        title="Help"
-        options={["Documentation", "About", "Check Updates"]}
-      />
-      <MenuButton
-        title="Copilot"
-        options={["Enable", "Settings", "Feedback"]}
-      />
-    </div>
+      <MenuButton title="Help" items={toItems(["Documentation", "About", "Check Updates"])} />
+      <MenuButton title="Copilot" items={toItems(["Enable", "Settings", "Feedback"])} />
+    </nav>
   );
 };
 

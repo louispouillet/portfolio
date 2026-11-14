@@ -33,6 +33,7 @@ The site runs on http://localhost:5173.
 | `npm run build` | Type checks and builds the site into `dist/` |
 | `npm run preview` | Serves the production build locally |
 | `npm run lint` | Runs ESLint |
+| `npm test` | Runs the unit tests with Vitest |
 | `npm run cv` | Builds the site and prints the English and French CV to `public/cv/` (needs Google Chrome) |
 
 ## Structure
@@ -57,6 +58,14 @@ src/
 vite/                # build plugin: site URL in index.html, sitemap.xml and robots.txt
 vercel.json          # SPA rewrite, security and cache headers
 ```
+
+## Terminal
+
+The editor has a working terminal, like the integrated terminal of VS Code. Open it with Ctrl + \` or the Terminal button of the status bar, and type `help`.
+
+* Its file system is built from the site data (`src/terminal/filesystem.ts`): pages are files of `~/portfolio/src`, case studies are in `projects/`, the CVs in `~/cv`.
+* `cd` and `open` navigate the site, `cat` prints a page as text, `lang` switches the language and `cv` downloads the CV.
+* Commands are pure functions that return lines and effects (`src/terminal/commands.ts`), so they are tested without a browser. Add a command there with its tests in `commands.test.ts`.
 
 ## Editing the content
 

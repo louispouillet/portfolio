@@ -6,6 +6,10 @@ type UiText = {
     languageSwitcherLabel: string;
     closeTab: string;
     toggleExplorer: string;
+    terminal: string;
+    terminalInput: string;
+    closeTerminal: string;
+    terminalShortcut: string;
   };
   home: {
     typedLines: string[];
@@ -110,6 +114,10 @@ export const UI_TEXT: Localized<UiText> = {
       present: "present",
       languageSwitcherLabel: "Language",
       closeTab: "Close",
+      terminal: "Terminal",
+      terminalInput: "Terminal command",
+      closeTerminal: "Close the terminal",
+      terminalShortcut: "Open the terminal (Ctrl + `)",
       toggleExplorer: "Show or hide the file explorer",
     },
     home: {
@@ -220,6 +228,10 @@ export const UI_TEXT: Localized<UiText> = {
       present: "aujourd'hui",
       languageSwitcherLabel: "Langue",
       closeTab: "Fermer",
+      terminal: "Terminal",
+      terminalInput: "Commande du terminal",
+      closeTerminal: "Fermer le terminal",
+      terminalShortcut: "Ouvrir le terminal (Ctrl + `)",
       toggleExplorer: "Afficher ou masquer l'explorateur de fichiers",
     },
     home: {

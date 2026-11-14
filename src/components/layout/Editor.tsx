@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { VscTerminal } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { tabFolders, tabMeta } from "../../config/pageMeta";
 import { PAGE_COMPONENTS } from "../../config/pages";
@@ -6,6 +7,7 @@ import { pagePath, tabKey, type EditorTab, type Language } from "../../config/ro
 import { useDocumentMeta } from "../../hooks/useDocumentMeta";
 import { UI_TEXT } from "../../i18n/ui";
 import CaseStudy from "../pages/CaseStudy";
+import TerminalPanel from "../terminal/TerminalPanel";
 import Breadcrumb from "../ui/Breadcrumb";
 import TabBar from "./TabBar";
 import FilesBar from "./FilesBar";
@@ -16,6 +18,19 @@ import StatusBar from "./StatusBar";
 import TopBar from "./TopBar";
 
 const HOME_TAB: EditorTab = { page: "home" };
+const TERMINAL_KEY = "`";
+const TERMINAL_KEY_CODE = "Backquote";
+
+let sessionCounter = 0;
+const nextSessionId = (): number => {
+  sessionCounter += 1;
+  return sessionCounter;
+};
+
+type TerminalSession = {
+  id: number;
+  initialCommand?: string;
+};
 
 type EditorProps = {
   language: Language;
@@ -27,6 +42,8 @@ const Editor = ({ language, activeTab }: EditorProps) => {
   const activeKey = tabKey(activeTab);
   const [openTabs, setOpenTabs] = useState<EditorTab[]>([activeTab]);
   const [previousActiveKey, setPreviousActiveKey] = useState<string>(activeKey);
+  const [terminalSession, setTerminalSession] = useState<TerminalSession | null>(null);
+  const isTerminalOpen = terminalSession !== null;
   const ActivePage = PAGE_COMPONENTS[activeTab.page];
 
   if (activeKey !== previousActiveKey) {
@@ -41,6 +58,22 @@ const Editor = ({ language, activeTab }: EditorProps) => {
   }, [language]);
 
   useDocumentMeta({ language, tab: activeTab });
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && (event.key === TERMINAL_KEY || event.code === TERMINAL_KEY_CODE)) {
+        event.preventDefault();
+        setTerminalSession((session) => (session === null ? { id: nextSessionId() } : null));
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const toggleTerminal = () => setTerminalSession((session) => (session === null ? { id: nextSessionId() } : null));
+  const openTerminal = () => setTerminalSession((session) => session ?? { id: nextSessionId() });
+  const startTerminal = (initialCommand?: string) => setTerminalSession({ id: nextSessionId(), initialCommand });
+  const closeTerminal = () => setTerminalSession(null);
 
   const handleSelectTab = (tab: EditorTab) => {
     navigate(pagePath({ language, ...tab }));
@@ -61,7 +94,7 @@ const Editor = ({ language, activeTab }: EditorProps) => {
       <div className='flex h-full w-full flex-col overflow-hidden bg-editor'>
       <div className='hidden sm:block'>
         <TopBar language={language} activeTab={activeTab} />
-        <MenuBar />
+        <MenuBar onNewTerminal={() => startTerminal()} onToggleTerminal={toggleTerminal} onRunTask={startTerminal} onKillTerminal={closeTerminal} />
       </div>
       <div className='flex min-h-0 w-full flex-1 flex-row'>
         <div className='hidden sm:block'>
@@ -76,12 +109,33 @@ const Editor = ({ language, activeTab }: EditorProps) => {
           </div>
           <Breadcrumb folders={tabFolders(activeTab)} fileName={tabMeta(activeTab).fileName} />
           <div className='block sm:hidden'>
-            <PhoneBar language={language} activeTab={activeTab} />
+            <PhoneBar language={language} activeTab={activeTab} onOpenTerminal={openTerminal} />
           </div>
           <div key={activeKey} className='min-h-0 flex-1 overflow-y-auto'>
             {activeTab.slug === undefined ? <ActivePage /> : <CaseStudy slug={activeTab.slug} />}
           </div>
-          <StatusBar activeTab={activeTab} />
+          {terminalSession !== null && (
+            <TerminalPanel
+              key={terminalSession.id}
+              language={language}
+              initialCommand={terminalSession.initialCommand}
+              onClose={closeTerminal}
+              onNavigate={handleSelectTab}
+              onLanguageChange={(newLanguage) => navigate(pagePath({ language: newLanguage, ...activeTab }))}
+            />
+          )}
+          <StatusBar activeTab={activeTab}>
+            <button
+              type="button"
+              onClick={toggleTerminal}
+              aria-pressed={isTerminalOpen}
+              title={UI_TEXT[language].common.terminalShortcut}
+              className="flex items-center gap-1 text-accent-teal transition-colors hover:text-white"
+            >
+              <VscTerminal aria-hidden="true" />{UI_TEXT[language].common.terminal}
+              <kbd className="rounded bg-white/10 px-1 font-mono text-[10px] text-muted">⌃`</kbd>
+            </button>
+          </StatusBar>
         </div>
       </div>
       </div>
