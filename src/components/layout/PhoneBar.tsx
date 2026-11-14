@@ -1,5 +1,5 @@
 import { IoMenuSharp } from "react-icons/io5";
-import { GoCopilot } from "react-icons/go";
+import { VscTerminal } from "react-icons/vsc";
 import FilesBar from "./FilesBar";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useState } from "react";
@@ -9,9 +9,10 @@ import { UI_TEXT } from "../../i18n/ui";
 type PhoneBarProps = {
   language: Language;
   activeTab: EditorTab;
+  onOpenTerminal: () => void;
 };
 
-const PhoneBar = ({ language, activeTab }: PhoneBarProps) => {
+const PhoneBar = ({ language, activeTab, onOpenTerminal }: PhoneBarProps) => {
     const [isFilesBarOpen, setIsFilesBarOpen] = useState(false);
 
     return (
@@ -28,7 +29,9 @@ const PhoneBar = ({ language, activeTab }: PhoneBarProps) => {
             </button>
             <span className="ml-2 font-mono text-[0.8rem] text-soft">~/.{tabKey(activeTab)}</span>
             <LanguageSwitcher language={language} activeTab={activeTab} className="ml-auto" />
-            <GoCopilot aria-hidden="true" className="mr-4 text-2xl text-soft"/>
+            <button type="button" aria-label={UI_TEXT[language].common.terminal} onClick={onOpenTerminal} className="mr-3 text-2xl text-accent-teal">
+              <VscTerminal aria-hidden="true" />
+            </button>
         </div>
         {isFilesBarOpen && (
           <div className="fixed inset-x-0 top-12 bottom-0 z-50 flex sm:hidden">
